@@ -100,7 +100,7 @@ body .topBtn {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 5000;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
