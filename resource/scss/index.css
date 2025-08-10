@@ -1,0 +1,17 @@
+@charset "UTF-8";
+body {
+  background-color: black; /* 흰색 배경 대신 검정색 설정 */
+  margin: 0;
+  overflow-x: hidden;
+}
+body h3 {
+  font-size: 40px;
+  font-weight: 600;
+  color: #213c61;
+}
+body .mainVisual .mainVisual_text h1 {
+  color: #fff;
+}
+body .mainVisual .mainVisual_text p {
+  color: #fff;
+}/*# sourceMappingURL=index.css.map */
