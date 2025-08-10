@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>포폴이셈ㅋㅋㅋ</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"
+    />
+    <link rel="stylesheet" href="resource/scss/style.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  </head>
+  <body>
+    <div class="topBtn"></div>
+
+    <nav class="notch-bar">
+      <a class="nav-item active" href="#mainVisual">
+        <div class="base"></div>
+        <div class="circle">
+          <div></div>
+          <div></div>
+        </div>
+      </a>
+      <a class="nav-item" href="#content1">
+        <div class="base"></div>
+        <div class="circle">
+          <div></div>
+          <div></div>
+        </div>
+      </a>
+      <a class="nav-item" href="#service-details">
+        <div class="base"></div>
+        <div class="circle">
+          <div></div>
+          <div></div>
+        </div>
+      </a>
+
+      <a class="nav-item" href="#projectsWrap">
+        <div class="base"></div>
+        <div class="circle">
+          <div></div>
+          <div></div>
+        </div>
+      </a>
+
+      <a class="nav-item" href="#bottomTextWrap">
+        <div class="base"></div>
+        <div class="circle">
+          <div></div>
+          <div></div>
+        </div>
+      </a>
+    </nav>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const nav = document.querySelector(".notch-bar");
+        if (!nav) return;
+
+        const navLinks = Array.from(nav.querySelectorAll(".nav-item"));
+        // href에서 #이후 id만 추출
+        const idFromHref = (href) => {
+          if (!href) return null;
+          const idx = href.indexOf("#");
+          if (idx === -1) return null;
+          return href.slice(idx + 1);
+        };
+
+        // 섹션 매핑: id -> { link, section }
+        const map = new Map();
+        navLinks.forEach((link) => {
+          const id = idFromHref(link.getAttribute("href"));
+          if (!id) return;
+          const sec = document.getElementById(id);
+          if (sec) map.set(id, { link, section: sec });
+
+          // 클릭 시 스무스 스크롤 (기본 앵커 동작 차단)
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const target = document.getElementById(id);
+            if (!target) return;
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            // 클릭 직후 즉시 active 표시
+            setActiveLink(link);
+          });
+        });
+
+        if (map.size === 0) return;
+
+        // 각 섹션의 현재 intersection 비율을 저장
+        const ratioMap = new Map();
+        map.forEach((v, id) => ratioMap.set(id, 0));
+
+        // IntersectionObserver 옵션: 필요하면 rootMargin/threshold값 조정 가능
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              const id = entry.target.id;
+              ratioMap.set(id, entry.intersectionRatio);
+            });
+
+            // 가장 intersectionRatio가 큰 섹션을 active로 선택
+            let bestId = null;
+            let bestRatio = 0;
+            ratioMap.forEach((r, id) => {
+              if (r > bestRatio) {
+                bestRatio = r;
+                bestId = id;
+              }
+            });
+
+            if (bestId) {
+              const { link } = map.get(bestId);
+              setActiveLink(link);
+            }
+          },
+          {
+            root: null,
+            // 화면 중앙 근처를 기준으로 잡고 싶으면 rootMargin 조정 (예: '-30% 0px -40% 0px')
+            rootMargin: "-25% 0px -40% 0px",
+            threshold: Array.from({ length: 21 }, (_, i) => i / 20), // 0,0.05,...,1.0
+          }
+        );
+
+        // 관찰 시작
+        map.forEach(({ section }) => observer.observe(section));
+
+        // active 토글 유틸
+        function setActiveLink(activeLink) {
+          navLinks.forEach((l) =>
+            l.classList.toggle("active", l === activeLink)
+          );
+        }
+
+        // 초기 상태 (로딩 시 바로 활성화)
+        // IntersectionObserver의 초기 콜백이 비동기이므로, 보장하려면 즉시 한 번 강제 체크
+        // (가장 중앙에 가까운 섹션을 계산해서 active 설정)
+        function initialActivateByViewportCenter() {
+          const viewportCenter = window.innerHeight / 2;
+          let closest = { id: null, dist: Infinity };
+          map.forEach(({ section }, id) => {
+            const rect = section.getBoundingClientRect();
+            const sectionCenter = rect.top + rect.height / 2;
+            const dist = Math.abs(sectionCenter - viewportCenter);
+            if (dist < closest.dist) closest = { id, dist };
+          });
+          if (closest.id) {
+            setActiveLink(map.get(closest.id).link);
+          }
+        }
+        initialActivateByViewportCenter();
+
+        // (선택) 리사이즈/로드 후 재계산
+        window.addEventListener("resize", () =>
+          initialActivateByViewportCenter()
+        );
+      });
+    </script>
+
+    <header>
+      <div class="headerWrap">
+        <h1 class="logo">KIM</h1>
+        <nav class="gnb">
+          <ul>
+            <li><a href="#content1">About</a></li>
+            <li><a href="#content2">Projects</a></li>
+            <li><a href="#content3">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="mainVisual" id="mainVisual">
+      <div class="mvTextWrap">
+        <span data-aos="fade-down" data-aos-delay="800">2025</span>
+        <h1 data-aos="fade-up" data-aos-delay="200" class="mvTitle">
+          PORTFOLIO
+        </h1>
+        <p data-aos="fade-up" data-aos-delay="600">
+          デザインで語り、体験で納得させる。
+        </p>
+      </div>
+
+      <div
+        class="slider-wrapper"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        data-aos-delay="1300"
+      >
+        <div class="slider-track">
+          <!-- 이미지 1세트 -->
+          <img src="./resource/img/img01.jpg" />
+          <img src="./resource/img/img02.jpg" />
+          <img src="./resource/img/img01.jpg" />
+          <img src="./resource/img/img02.jpg" />
+          <img src="./resource/img/img01.jpg" />
+          <img src="./resource/img/img02.jpg" />
+
+          <!-- 이미지 2세트 (반복용) -->
+          <img src="./resource/img/img01.jpg" />
+          <img src="./resource/img/img02.jpg" />
+          <img src="./resource/img/img01.jpg" />
+          <img src="./resource/img/img02.jpg" />
+          <img src="./resource/img/img01.jpg" />
+          <img src="./resource/img/img02.jpg" />
+        </div>
+      </div>
+
+      <div class="mvSeconWrap">
+        <div class="center-content">
+          <h3 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            Design with clarity. <br />
+            Build with purpose.
+          </h3>
+        </div>
+        <video
+          src="resource/img/mvVideo.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+        ></video>
+      </div>
+
+      <div
+        class="bgDecoWrap"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+        data-aos-delay="100"
+      >
+        
+        <img class="deco1" src="./resource/img/bgImg01.png" alt="" />
+      </div>
+    </section>
+
+    <section class="content1" id="content1">
+      <div class="content1Wrap">
+        <h2
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="300"
+          class="content1Title"
+        >
+          Evolving Experiences,<br />
+        </h2>
+        <h2
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="300"
+          class="content1Title"
+        >
+          Empowering Outcomes. <br />
+        </h2>
+        <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+          <img
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            src="./resource/img/con1Img.png"
+            alt=""
+          />
+          <p class="content1Text">
+            이 포트폴리오는 다양한 웹 기술을 활용하여 제작되었습니다. 최신
+            트렌드와 기술을 반영하여 사용자에게 매력적인 경험을 제공합니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-details" id="service-details">
+      <div class="projectText">
+        <h2 data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100">
+          Projects
+        </h2>
+        <p data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100">
+          다양한 프로젝트를 통해 웹 기술의 진화를 경험하세요.
+        </p>
+      </div>
+      <div class="service-item" id="service-detail2">
+        <h3 class="title" data-aos="fade-down">Integration</h3>
+        <ul class="features" data-aos="fade-down" data-aos-delay="200">
+          <li>Web/App 구축</li>
+          <li>Design System</li>
+          <li>POC</li>
+          <li>E-Commerce/Finance</li>
+          <li>AI 융합 서비스 구축</li>
+        </ul>
+        <div class="image" data-aos="fade-down" data-aos-delay="300">
+          <img
+            src="https://framerusercontent.com/images/yU79cv3aanPo6Frd3J7j53k7k0.png"
+            alt="Integration"
+          />
+        </div>
+      </div>
+
+      <div class="service-item" id="service-detail2">
+        <h3 class="title" data-aos="fade-down">Integration</h3>
+        <ul class="features" data-aos="fade-down" data-aos-delay="100">
+          <li>Web/App 구축</li>
+          <li>Design System</li>
+          <li>POC</li>
+          <li>E-Commerce/Finance</li>
+          <li>AI 융합 서비스 구축</li>
+        </ul>
+        <div class="image" data-aos="fade-down" data-aos-delay="200">
+          <img
+            src="https://framerusercontent.com/images/yU79cv3aanPo6Frd3J7j53k7k0.png"
+            alt="Integration"
+          />
+        </div>
+      </div>
+
+      <div class="service-item" id="service-detail2">
+        <h3 class="title" data-aos="fade-down">Integration</h3>
+        <ul class="features" data-aos="fade-down" data-aos-delay="100">
+          <li>Web/App 구축</li>
+          <li>Design System</li>
+          <li>POC</li>
+          <li>E-Commerce/Finance</li>
+          <li>AI 융합 서비스 구축</li>
+        </ul>
+        <div class="image" data-aos="fade-down" data-aos-delay="200">
+          <img
+            src="https://framerusercontent.com/images/yU79cv3aanPo6Frd3J7j53k7k0.png"
+            alt="Integration"
+          />
+        </div>
+      </div>
+
+      <div class="service-item" id="service-detail2">
+        <h3 class="title" data-aos="fade-down">Integration</h3>
+        <ul class="features" data-aos="fade-down" data-aos-delay="100">
+          <li>Web/App 구축</li>
+          <li>Design System</li>
+          <li>POC</li>
+          <li>E-Commerce/Finance</li>
+          <li>AI 융합 서비스 구축</li>
+        </ul>
+        <div class="image" data-aos="fade-down" data-aos-delay="200">
+          <img
+            src="https://framerusercontent.com/images/yU79cv3aanPo6Frd3J7j53k7k0.png"
+            alt="Integration"
+          />
+        </div>
+      </div>
+
+      <div class="service-item" id="service-detail2">
+        <h3 class="title" data-aos="fade-down">Integration</h3>
+        <ul class="features" data-aos="fade-down" data-aos-delay="100">
+          <li>Web/App 구축</li>
+          <li>Design System</li>
+          <li>POC</li>
+          <li>E-Commerce/Finance</li>
+          <li>AI 융합 서비스 구축</li>
+        </ul>
+        <div class="image" data-aos="fade-down" data-aos-delay="200">
+          <img
+            src="https://framerusercontent.com/images/yU79cv3aanPo6Frd3J7j53k7k0.png"
+            alt="Integration"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="projectsWrap" id="projectsWrap">
+      <div
+        class="projectText"
+        data-aos="fade-right"
+        data-aos-duration="1000"
+        data-aos-delay="100"
+      >
+        <h2>Projects</h2>
+      </div>
+      <ul>
+        <li class="leftObj">
+          <div
+            class="textArea"
+            data-aos="fade-left"
+            data-aos-duration="1000"
+            data-aos-delay="300"
+          >
+            <div class="topText">
+              <h4>PROJECT1</h4>
+              <span>인터랙티브 반응형WEB</span>
+            </div>
+            <div class="bottomArea">
+              <ul>
+                <li><img src="./resource/img/phoIcon.png" alt="" /></li>
+                <li><img src="./resource/img/aiIcon.png" alt="" /></li>
+                <li><img src="./resource/img/aeIcon.png" alt="" /></li>
+              </ul>
+              <p>나는짱이고 그리고 짱이다 왜냐하면 짱이긴때<br />그리고 너는</p>
+            </div>
+          </div>
+
+          <div
+            class="imgArea"
+            data-aos="fade-left"
+            data-aos-duration="1800"
+            data-aos-delay="100"
+          >
+            <a href="#">
+              <img src="/resource/img/graImg.jpg" alt="" />
+            </a>
+          </div>
+        </li>
+
+        <li class="rightObj">
+          <div
+            class="textArea"
+            data-aos="fade-left"
+            data-aos-duration="1000"
+            data-aos-delay="300"
+          >
+            <div class="topText">
+              <h4>PROJECT21</h4>
+              <span>인터랙티브 반응형WEB</span>
+            </div>
+            <div class="bottomArea">
+              <ul>
+                <li><img src="./resource/img/phoIcon.png" alt="" /></li>
+                <li><img src="./resource/img/phoIcon.png" alt="" /></li>
+                <li><img src="./resource/img/phoIcon.png" alt="" /></li>
+                <li><img src="./resource/img/phoIcon.png" alt="" /></li>
+                <li><img src="./resource/img/phoIcon.png" alt="" /></li>
+              </ul>
+              <p>나는짱이고 그리고 짱이다 왜냐하면 짱이긴때<br />그리고 너는</p>
+            </div>
+          </div>
+
+          <div
+            class="imgArea"
+            data-aos="fade-left"
+            data-aos-duration="1800"
+            data-aos-delay="100"
+          >
+            <a href="#">
+              <img src="/resource/img/graImg.jpg" alt="" />
+            </a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="bottomTextWrap" id="bottomTextWrap">
+      <div class="leftArea">
+        <h1 data-aos="fade-right" data-aos-delay="400" data-aos-duration="1000">
+          INSIGHT,
+        </h1>
+        <h1 data-aos="fade-right" data-aos-delay="500" data-aos-duration="1000">
+          NERVE,
+        </h1>
+        <h1 data-aos="fade-right" data-aos-delay="600" data-aos-duration="1000">
+          VIEW
+        </h1>
+        <img src="./resource/img/bgImg02.png" alt="" class="deco2" />
+      </div>
+
+      <div
+        class="rightArea"
+        data-aos="fade-left"
+        data-aos-delay="700"
+        data-aos-duration="1000"
+      >
+        <p>
+          우리는 고객과 시장을 통찰력있게 봅니다. 누구도 안 된다고 말할 때,<br />
+
+          우리는 가능성을 향해 대담하게 도전하며, 넓은 견해로 바라보고 <br />
+          창의적이면서 논리적인 서비스를 만듭니다.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="projectText">
+        <h4>© 2025 KIM YOUNGUK. PORTFOLIO. ALL RIGHTS RESERVED.</h4>
+        <div class="linkIcon">
+          <img src="./resource/img/aiIcon.png" alt="" />
+          <img src="./resource/img/aiIcon.png" alt="" />
+          <img src="./resource/img/aiIcon.png" alt="" />
+        </div>
+      </div>
+    </footer>
+  </body>
+
+<script>
+  let scrollY = window.scrollY;
+  let currentY = window.scrollY;
+  const speed = 0.1;
+
+  window.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    scrollY += e.deltaY;
+    scrollY = Math.max(0, Math.min(scrollY, document.body.scrollHeight - window.innerHeight));
+  }, { passive: false });
+
+  function smoothScroll() {
+    currentY += (scrollY - currentY) * speed;
+    window.scrollTo(0, currentY);
+    requestAnimationFrame(smoothScroll);
+  }
+  smoothScroll();
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const nav = document.querySelector(".notch-bar");
+    if (!nav) return;
+
+    const navLinks = Array.from(nav.querySelectorAll(".nav-item"));
+
+    const idFromHref = (href) => {
+      if (!href) return null;
+      const idx = href.indexOf("#");
+      if (idx === -1) return null;
+      return href.slice(idx + 1);
+    };
+
+    const map = new Map();
+    navLinks.forEach((link) => {
+      const id = idFromHref(link.getAttribute("href"));
+      if (!id) return;
+      const sec = document.getElementById(id);
+      if (sec) map.set(id, { link, section: sec });
+
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (!sec) return;
+        scrollY = sec.offsetTop; // 직접 목표 위치 변경
+        setActiveLink(link);
+      });
+    });
+
+    if (map.size === 0) return;
+
+    // 이하 생략... (IntersectionObserver 등)
+    // IntersectionObserver에서 active 상태 설정 시 setActiveLink 호출
+
+    function setActiveLink(activeLink) {
+      navLinks.forEach((l) => l.classList.toggle("active", l === activeLink));
+    }
+  });
+</script>
+
+  <script>
+    AOS.init({
+      startEvent: "DOMContentLoaded",
+      offset: 50, // 요소가 뷰포트 하단에서 50px 들어올 때 트리거
+      duration: 800, // 애니메이션 지속 시간
+      once: false, // 스크롤 시 반복 애니메이션 허용
+    });
+  </script>
+</html>
