@@ -167,7 +167,7 @@ body header .headerWrap {
 body header .logo {
   width: 90px;
   height: 30px;
-  background-image: url("../img/mainlogo.svg");
+  background-image: url("./img/mainlogo.svg");
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
