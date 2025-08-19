@@ -239,7 +239,7 @@ body header .headerWrap .portfolioDown:hover {
 body header .logo {
   width: 90px;
   height: 30px;
-  background-image: url("./img/mainlogo.svg");
+  background-image: url("./img/mainLogo.svg");
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -442,7 +442,7 @@ body .mainVisual .mvSeconWrap video {
 }
 @media (max-width: 768px) {
   body .mainVisual {
-    padding: 180px 50px 0px 50px;
+    padding-top: 180px;
   }
   body .mainVisual .mvTextWrap h1 {
     font-size: 3.9rem;
