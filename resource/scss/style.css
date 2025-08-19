@@ -239,7 +239,7 @@ body header .headerWrap .portfolioDown:hover {
 body header .logo {
   width: 90px;
   height: 30px;
-  background-image: url("./img/mainLogo.svg");
+  background-image: url("../img/mainLogo.png");
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
