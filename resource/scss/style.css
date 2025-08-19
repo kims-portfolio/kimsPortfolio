@@ -18,6 +18,10 @@
   font-weight: 400;
   font-style: normal;
 }
+html, body {
+  overflow: hidden;
+}
+
 /* Global Styles */
 body {
   background-color: #000;
@@ -346,9 +350,11 @@ body .mainVisual .mvTextWrap p {
 body .mainVisual .slider-wrapper {
   width: 100%;
   height: 700px;
+  overflow: hidden;
   position: relative;
   perspective: 1000px;
   margin-top: 15vh;
+  max-width: 100vw; /* 뷰포트 너비 초과 방지 */
   margin-left: auto;
   margin-right: auto; /* 중앙 정렬로 양쪽 여백 확보 */
 }
@@ -377,6 +383,7 @@ body .mainVisual .slider-track {
   top: 50%;
   transform: translate(-50%, -50%);
   animation: scroll 60s linear infinite;
+  overflow: hidden;
 }
 body .mainVisual .slider-track img {
   width: clamp(200px, 20vw, 350px);
@@ -401,6 +408,7 @@ body .mainVisual .mvSeconWrap {
   position: relative;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
 }
 body .mainVisual .mvSeconWrap .center-content {
   position: absolute;
