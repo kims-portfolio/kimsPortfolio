@@ -8,44 +8,83 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"
     />
-    <link rel="stylesheet" href="resource/scss/style.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+      /* 인라인 CSS로 모바일 네비게이션 및 스크롤 관련 스타일 추가 */
+      html,
+      body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 100%;
+      }
+
+      .mobile-nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+
+      .mobile-nav.active {
+        display: block;
+        transform: translateX(0);
+      }
+
+      .mobile-nav ul {
+        list-style: none;
+        padding: 20px;
+        margin: 0;
+      }
+
+      .mobile-nav li {
+        margin: 10px 0;
+      }
+
+      .mobile-nav a {
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+      }
+
+      .mobileHeader .rightArea {
+        cursor: pointer;
+        font-size: 24px;
+        padding: 10px;
+      }
+
+      /* style.css에 정의된 스타일을 덮어쓰지 않도록 최소한의 스타일만 추가 */
+      @media (min-width: 769px) {
+        .mobileHeader,
+        .mobile-nav {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .notch-bar,
+        header:not(.mobileHeader) {
+          display: none;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="resource/scss/style.css" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   </head>
   <body>
-    <!-- <div class="topBtn"></div>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const topBtn = document.querySelector(".topBtn");
-
-        // 초기 숨김 처리
-        topBtn.classList.remove("active");
-
-        window.addEventListener("scroll", () => {
-          if (window.scrollY > 100) {
-            topBtn.classList.add("active");
-          } else {
-            topBtn.classList.remove("active");
-          }
-        });
-
-        topBtn.addEventListener("click", () => {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth", // 부드럽게 스크롤
-          });
-        });
-      });
-    </script> -->
+    <!-- 주석 처리된 topBtn 코드 유지 -->
+    <!-- <div class="topBtn"></div> -->
 
     <header class="mobileHeader">
       <div class="leftArea">
         <svg class="logo"></svg>
       </div>
-
-      <div class="rightArea">
-        <button>☰</button>
-      </div>
+      <div class="rightArea">☰</div>
     </header>
 
     <nav class="mobile-nav">
@@ -57,8 +96,6 @@
         <li><a href="#bottomTextWrap">Contact</a></li>
       </ul>
     </nav>
-
-    <!-- 모바일 전용 네비와 헤더 끝 -->
 
     <nav class="notch-bar">
       <a class="nav-item active" href="#mainVisual">
@@ -82,7 +119,6 @@
           <div></div>
         </div>
       </a>
-
       <a class="nav-item" href="#projectsWrap">
         <div class="base"></div>
         <div class="circle">
@@ -90,7 +126,6 @@
           <div></div>
         </div>
       </a>
-
       <a class="nav-item" href="#bottomTextWrap">
         <div class="base"></div>
         <div class="circle">
@@ -99,111 +134,6 @@
         </div>
       </a>
     </nav>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const nav = document.querySelector(".notch-bar");
-        if (!nav) return;
-
-        const navLinks = Array.from(nav.querySelectorAll(".nav-item"));
-        // href에서 #이후 id만 추출
-        const idFromHref = (href) => {
-          if (!href) return null;
-          const idx = href.indexOf("#");
-          if (idx === -1) return null;
-          return href.slice(idx + 1);
-        };
-
-        // 섹션 매핑: id -> { link, section }
-        const map = new Map();
-        navLinks.forEach((link) => {
-          const id = idFromHref(link.getAttribute("href"));
-          if (!id) return;
-          const sec = document.getElementById(id);
-          if (sec) map.set(id, { link, section: sec });
-
-          // 클릭 시 스무스 스크롤 (기본 앵커 동작 차단)
-          link.addEventListener("click", (e) => {
-            e.preventDefault();
-            const target = document.getElementById(id);
-            if (!target) return;
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-            // 클릭 직후 즉시 active 표시
-            setActiveLink(link);
-          });
-        });
-
-        if (map.size === 0) return;
-
-        // 각 섹션의 현재 intersection 비율을 저장
-        const ratioMap = new Map();
-        map.forEach((v, id) => ratioMap.set(id, 0));
-
-        // IntersectionObserver 옵션: 필요하면 rootMargin/threshold값 조정 가능
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              const id = entry.target.id;
-              ratioMap.set(id, entry.intersectionRatio);
-            });
-
-            // 가장 intersectionRatio가 큰 섹션을 active로 선택
-            let bestId = null;
-            let bestRatio = 0;
-            ratioMap.forEach((r, id) => {
-              if (r > bestRatio) {
-                bestRatio = r;
-                bestId = id;
-              }
-            });
-
-            if (bestId) {
-              const { link } = map.get(bestId);
-              setActiveLink(link);
-            }
-          },
-          {
-            root: null,
-            // 화면 중앙 근처를 기준으로 잡고 싶으면 rootMargin 조정 (예: '-30% 0px -40% 0px')
-            rootMargin: "-25% 0px -40% 0px",
-            threshold: Array.from({ length: 21 }, (_, i) => i / 20), // 0,0.05,...,1.0
-          }
-        );
-
-        // 관찰 시작
-        map.forEach(({ section }) => observer.observe(section));
-
-        // active 토글 유틸
-        function setActiveLink(activeLink) {
-          navLinks.forEach((l) =>
-            l.classList.toggle("active", l === activeLink)
-          );
-        }
-
-        // 초기 상태 (로딩 시 바로 활성화)
-        // IntersectionObserver의 초기 콜백이 비동기이므로, 보장하려면 즉시 한 번 강제 체크
-        // (가장 중앙에 가까운 섹션을 계산해서 active 설정)
-        function initialActivateByViewportCenter() {
-          const viewportCenter = window.innerHeight / 2;
-          let closest = { id: null, dist: Infinity };
-          map.forEach(({ section }, id) => {
-            const rect = section.getBoundingClientRect();
-            const sectionCenter = rect.top + rect.height / 2;
-            const dist = Math.abs(sectionCenter - viewportCenter);
-            if (dist < closest.dist) closest = { id, dist };
-          });
-          if (closest.id) {
-            setActiveLink(map.get(closest.id).link);
-          }
-        }
-        initialActivateByViewportCenter();
-
-        // (선택) 리사이즈/로드 후 재계산
-        window.addEventListener("resize", () =>
-          initialActivateByViewportCenter()
-        );
-      });
-    </script>
 
     <header>
       <div class="headerWrap">
@@ -237,21 +167,18 @@
         data-aos-delay="1300"
       >
         <div class="slider-track">
-          <!-- 이미지 1세트 -->
-          <img src="./resource/img/img01.jpg" />
-          <img src="./resource/img/img02.jpg" />
-          <img src="./resource/img/img01.jpg" />
-          <img src="./resource/img/img02.jpg" />
-          <img src="./resource/img/img01.jpg" />
-          <img src="./resource/img/img02.jpg" />
-
-          <!-- 이미지 2세트 (반복용) -->
-          <img src="./resource/img/img01.jpg" />
-          <img src="./resource/img/img02.jpg" />
-          <img src="./resource/img/img01.jpg" />
-          <img src="./resource/img/img02.jpg" />
-          <img src="./resource/img/img01.jpg" />
-          <img src="./resource/img/img02.jpg" />
+          <img src="./resource/img/img01.jpg"/>
+          <img src="./resource/img/img02.jpg"/>
+          <img src="./resource/img/img01.jpg"/>
+          <img src="./resource/img/img02.jpg"/>
+          <img src="./resource/img/img01.jpg"/>
+          <img src="./resource/img/img02.jpg"/>
+          <img src="./resource/img/img01.jpg"/>
+          <img src="./resource/img/img02.jpg"/>
+          <img src="./resource/img/img01.jpg"/>
+          <img src="./resource/img/img02.jpg"/>
+          <img src="./resource/img/img01.jpg"/>
+          <img src="./resource/img/img02.jpg"/>
         </div>
       </div>
 
@@ -277,7 +204,7 @@
         data-aos-duration="2000"
         data-aos-delay="100"
       >
-        <img class="deco1" src="./resource/img/bgImg01.png" alt="" />
+        <img class="deco1" src="./resource/img/bgImg01.png" />
       </div>
     </section>
 
@@ -305,7 +232,7 @@
             data-aos-duration="1000"
             src="./resource/img/con1Img.png"
             alt=""
-          />
+                    />
           <p class="content1Text">
             フロントエンドとデザインを同時に実現し、<br />ユーザー中心の実質的な成果を生み出します。
           </p>
@@ -331,20 +258,19 @@
           <li>デザインシステム開発</li>
         </ul>
         <div class="image" data-aos="fade-down" data-aos-delay="300">
-          <img src="./resource/img/graphicIcon.png" alt="Integration" />
+          <img src="./resource/img/graphicIcon.png" alt="Integration"/>
         </div>
       </div>
 
       <div class="service-item" id="service-detail2">
         <h3 class="title" data-aos="fade-down">UI/UX</h3>
         <ul class="features" data-aos="fade-down" data-aos-delay="100">
-          <li></li>
           <li>ユーザーインターフェース設計</li>
           <li>ワイヤーフレーム・プロトタイプ</li>
           <li>インタラクションデザイン</li>
         </ul>
         <div class="image" data-aos="fade-down" data-aos-delay="200">
-          <img src="./resource/img/codeIcon.png" alt="Integration" />
+          <img src="./resource/img/codeIcon.png" alt="Integration"/>
         </div>
       </div>
 
@@ -357,7 +283,7 @@
           <li>マルチデバイス対応Webサイト制作</li>
         </ul>
         <div class="image" data-aos="fade-down" data-aos-delay="200">
-          <img src="./resource/img/htmlIcon.png" alt="Integration" />
+          <img src="./resource/img/htmlIcon.png" alt="Integration"/>
         </div>
       </div>
 
@@ -370,7 +296,7 @@
           <li>2Dキャラクター動作アニメーション</li>
         </ul>
         <div class="image" data-aos="fade-down" data-aos-delay="200">
-          <img src="./resource/img/videoIcon.png" alt="Integration" />
+          <img src="./resource/img/videoIcon.png" alt="Integration"/>
         </div>
       </div>
     </section>
@@ -398,9 +324,9 @@
             </div>
             <div class="bottomArea">
               <ul>
-                <li><img src="./resource/img/phoIcon.png" alt="" /></li>
-                <li><img src="./resource/img/aiIcon.png" alt="" /></li>
-                <li><img src="./resource/img/aeIcon.png" alt="" /></li>
+                <li><img src="./resource/img/phoIcon.png" /></li>
+                <li><img src="./resource/img/aiIcon.png" /></li>
+                <li><img src="./resource/img/aeIcon.png" /></li>
               </ul>
               <p>나는짱이고 그리고 짱이다 왜냐하면 짱이긴때<br />그리고 너는</p>
             </div>
@@ -413,7 +339,7 @@
             data-aos-delay="100"
           >
             <a href="#">
-              <img src="./resource/img/graImg.jpg" alt="" />
+              <img src="./resource/img/graImg.jpg" />
             </a>
           </div>
         </li>
@@ -431,11 +357,11 @@
             </div>
             <div class="bottomArea">
               <ul>
-                <li><img src="./resource/img/phoIcon.png" alt="" /></li>
-                <li><img src="./resource/img/phoIcon.png" alt="" /></li>
-                <li><img src="./resource/img/phoIcon.png" alt="" /></li>
-                <li><img src="./resource/img/phoIcon.png" alt="" /></li>
-                <li><img src="./resource/img/phoIcon.png" alt="" /></li>
+                <li><img src="./resource/img/phoIcon.png" /></li>
+                <li><img src="./resource/img/phoIcon.png" /></li>
+                <li><img src="./resource/img/phoIcon.png" /></li>
+                <li><img src="./resource/img/phoIcon.png" /></li>
+                <li><img src="./resource/img/phoIcon.png" /></li>
               </ul>
               <p>나는짱이고 그리고 짱이다 왜냐하면 짱이긴때<br />그리고 너는</p>
             </div>
@@ -448,7 +374,7 @@
             data-aos-delay="100"
           >
             <a href="#">
-              <img src="./resource/img/graImg.jpg" alt="" />
+              <img src="./resource/img/graImg.jpg" />
             </a>
           </div>
         </li>
@@ -466,7 +392,7 @@
         <h1 data-aos="fade-right" data-aos-delay="600" data-aos-duration="1000">
           VIEW
         </h1>
-        <img src="./resource/img/bgImg02.png" alt="" class="deco2" />
+        <img src="./resource/img/bgImg02.png" alt="" class="deco2"/>
       </div>
 
       <div
@@ -489,74 +415,159 @@
         <div class="linkIcon"></div>
       </div>
     </footer>
-  </body>
 
-  <script>
-    let scrollY = window.scrollY;
-    let currentY = window.scrollY;
-    const speed = 0.1;
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // 뷰포트 너비 확인 함수
+        const isMobile = () => window.innerWidth <= 768;
 
-    window.addEventListener(
-      "wheel",
-      (e) => {
-        e.preventDefault();
-        scrollY += e.deltaY;
-        scrollY = Math.max(
-          0,
-          Math.min(scrollY, document.body.scrollHeight - window.innerHeight)
-        );
-      },
-      { passive: false }
-    );
+        // 스무스 스크롤 관련 변수
+        let scrollY = window.scrollY;
+        let currentY = window.scrollY;
+        const speed = 0.1;
+        let isSmoothScrollActive = !isMobile();
 
-    function smoothScroll() {
-      currentY += (scrollY - currentY) * speed;
-      window.scrollTo(0, currentY);
-      requestAnimationFrame(smoothScroll);
-    }
-    smoothScroll();
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const nav = document.querySelector(".notch-bar");
-      if (!nav) return;
-
-      const navLinks = Array.from(nav.querySelectorAll(".nav-item"));
-
-      const idFromHref = (href) => {
-        if (!href) return null;
-        const idx = href.indexOf("#");
-        if (idx === -1) return null;
-        return href.slice(idx + 1);
-      };
-
-      const map = new Map();
-      navLinks.forEach((link) => {
-        const id = idFromHref(link.getAttribute("href"));
-        if (!id) return;
-        const sec = document.getElementById(id);
-        if (sec) map.set(id, { link, section: sec });
-
-        link.addEventListener("click", (e) => {
+        // 스크롤 이벤트 핸들러
+        const handleWheel = (e) => {
           e.preventDefault();
-          if (!sec) return;
-          scrollY = sec.offsetTop; // 직접 목표 위치 변경
-          setActiveLink(link);
+          scrollY += e.deltaY;
+          scrollY = Math.max(0, Math.min(scrollY, document.body.scrollHeight - window.innerHeight));
+        };
+
+        // 스무스 스크롤 함수
+        function smoothScroll() {
+          if (isSmoothScrollActive) {
+            currentY += (scrollY - currentY) * speed;
+            window.scrollTo(0, currentY);
+          }
+          requestAnimationFrame(smoothScroll);
+        }
+
+        // 스크롤 이벤트 및 스무스 스크롤 초기화
+        if (!isMobile()) {
+          window.addEventListener("wheel", handleWheel, { passive: false });
+          smoothScroll();
+        }
+
+        // 리사이즈 시 스크롤 이벤트 동적 관리
+        window.addEventListener("resize", () => {
+          const wasMobile = isSmoothScrollActive === false;
+          isSmoothScrollActive = !isMobile();
+
+          if (isMobile() && !wasMobile) {
+            window.removeEventListener("wheel", handleWheel);
+          } else if (!isMobile() && wasMobile) {
+            window.addEventListener("wheel", handleWheel, { passive: false });
+          }
         });
+
+        // Notch-bar 네비게이션 로직
+        if (!isMobile()) {
+          const nav = document.querySelector(".notch-bar");
+          if (!nav) return;
+
+          const navLinks = Array.from(nav.querySelectorAll(".nav-item"));
+
+          const idFromHref = (href) => {
+            if (!href) return null;
+            const idx = href.indexOf("#");
+            if (idx === -1) return null;
+            return href.slice(idx + 1);
+          };
+
+          const map = new Map();
+          navLinks.forEach((link) => {
+            const id = idFromHref(link.getAttribute("href"));
+            if (!id) return;
+            const sec = document.getElementById(id);
+            if (sec) map.set(id, { link, section: sec });
+
+            link.addEventListener("click", (e) => {
+              e.preventDefault();
+              if (!sec) return;
+              scrollY = sec.offsetTop;
+              setActiveLink(link);
+            });
+          });
+
+          if (map.size === 0) return;
+
+          const ratioMap = new Map();
+          map.forEach((v, id) => ratioMap.set(id, 0));
+
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                const id = entry.target.id;
+                ratioMap.set(id, entry.intersectionRatio);
+              });
+
+              let bestId = null;
+              let bestRatio = 0;
+              ratioMap.forEach((r, id) => {
+                if (r > bestRatio) {
+                  bestRatio = r;
+                  bestId = id;
+                }
+              });
+
+              if (bestId) {
+                const { link } = map.get(bestId);
+                setActiveLink(link);
+              }
+            },
+            {
+              root: null,
+              rootMargin: "-25% 0px -40% 0px",
+              threshold: Array.from({ length: 21 }, (_, i) => i / 20),
+            }
+          );
+
+          map.forEach(({ section }) => observer.observe(section));
+
+          function setActiveLink(activeLink) {
+            navLinks.forEach((l) => l.classList.toggle("active", l === activeLink));
+          }
+
+          function initialActivateByViewportCenter() {
+            const viewportCenter = window.innerHeight / 2;
+            let closest = { id: null, dist: Infinity };
+            map.forEach(({ section }, id) => {
+              const rect = section.getBoundingClientRect();
+              const sectionCenter = rect.top + rect.height / 2;
+              const dist = Math.abs(sectionCenter - viewportCenter);
+              if (dist < closest.dist) closest = { id, dist };
+            });
+            if (closest.id) {
+              setActiveLink(map.get(closest.id).link);
+            }
+          }
+          initialActivateByViewportCenter();
+
+          window.addEventListener("resize", () => initialActivateByViewportCenter());
+        }
+
+        // 모바일 네비게이션 토글
+        const hamburger = document.querySelector(".mobileHeader .rightArea");
+        const mobileNav = document.querySelector(".mobile-nav");
+        if (hamburger && mobileNav) {
+          hamburger.addEventListener("click", () => {
+            mobileNav.classList.toggle("active");
+          });
+
+          mobileNav.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+              mobileNav.classList.remove("active");
+            });
+          });
+        }
       });
 
-      if (map.size === 0) return;
-
-      // 이하 생략... (IntersectionObserver 등)
-      // IntersectionObserver에서 active 상태 설정 시 setActiveLink 호출
-
-      function setActiveLink(activeLink) {
-        navLinks.forEach((l) => l.classList.toggle("active", l === activeLink));
-      }
-    });
-  </script>
-
-  <script>
-    AOS.init({    
-    });
-  </script>
+      // AOS 초기화
+      AOS.init({
+        startEvent: "DOMContentLoaded",
+        once: true, // 모바일 성능 개선을 위해 한 번만 애니메이션 실행
+      });
+    </script>
+  </body>
 </html>
