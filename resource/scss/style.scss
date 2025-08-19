@@ -21,8 +21,9 @@
   font-weight: 400;
   font-style: normal;
 }
-html {
-  overflow: hidden;
+html, body {
+  overflow: auto !important;
+  height: auto !important;
 }
 
 /* Global Styles */
