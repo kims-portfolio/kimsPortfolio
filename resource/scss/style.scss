@@ -48,8 +48,13 @@ body {
       padding: 20px 50px;
 
       .rightArea {
+
+        button {
+        all: unset;
         color: #fff;
         font-size: 1.8rem;
+        cursor: pointer;
+        }
       }
     }
   }
