@@ -326,7 +326,7 @@ body .mainVisual .mvTextWrap span {
   margin-left: 1.2rem;
 }
 body .mainVisual .mvTextWrap h1 {
-  font-size: clamp(6rem, 6vw, 10rem);
+  font-size: 7.2rem;
   font-family: "rosaline";
   letter-spacing: 0.13em;
   margin-top: 1.8rem;
@@ -342,8 +342,8 @@ body .mainVisual .mvTextWrap h1 {
 }
 body .mainVisual .mvTextWrap p {
   color: #fff;
-  font-size: clamp(1rem, 3vw, 1rem);
-  margin-top: 1rem;
+  font-size: 1.2rem;
+  margin-top: 12px;
   font-family: "Chosunilbo_myungjo";
 }
 body .mainVisual .slider-wrapper {
@@ -441,11 +441,31 @@ body .mainVisual .mvSeconWrap video {
   z-index: 1;
 }
 @media (max-width: 768px) {
+  body .mainVisual {
+    padding: 180px 50px 0px 50px;
+  }
+  body .mainVisual .mvTextWrap h1 {
+    font-size: 3.9rem;
+  }
   body .mainVisual .mvSeconWrap {
     height: 50vh;
   }
   body .mainVisual .mvSeconWrap .center-content h3 {
     font-size: 3rem;
+  }
+}
+@media (max-width: 480px) {
+  body .mainVisual {
+    padding: 180px 0px 0px 0px;
+  }
+  body .mainVisual .mvTextWrap h1 {
+    font-size: 3.9rem;
+  }
+  body .mainVisual .mvSeconWrap {
+    height: 40vh;
+  }
+  body .mainVisual .mvSeconWrap .center-content h3 {
+    font-size: 2.4rem;
   }
 }
 body .content1 {
@@ -480,13 +500,13 @@ body .content1 .content1Wrap img {
   }
 }
 body .content1 .content1Wrap .content1Title {
-  font-size: clamp(2.5rem, 5vw, 4.4rem);
+  font-size: 4rem;
   font-weight: bold;
   margin-bottom: 1rem;
   color: #1c1c1c;
 }
 body .content1 .content1Wrap .content1Text {
-  font-size: clamp(1rem, 3vw, 1.3rem);
+  font-size: 1.5rem;
   color: #555;
   max-width: 800px;
   line-height: 1.5;
@@ -495,6 +515,22 @@ body .content1 .content1Wrap .content1Text {
 @media (max-width: 768px) {
   body .content1 .content1Wrap {
     padding: 60px 20px;
+  }
+  body .content1 .content1Wrap img {
+    width: 400px;
+    margin: 30px 0;
+  }
+}
+@media (max-width: 480px) {
+  body .content1 .content1Wrap {
+    padding: 60px 20px;
+  }
+  body .content1 .content1Wrap .content1Text {
+    font-size: 1.2rem;
+  }
+  body .content1 .content1Wrap .content1Title {
+    font-size: 2.3rem;
+    margin-bottom: 10px;
   }
   body .content1 .content1Wrap img {
     width: 400px;
@@ -868,6 +904,9 @@ body .projectsWrap ul .leftObj .imgArea::before {
   body .projectsWrap {
     flex-direction: column;
     padding: 100px 50px;
+  }
+  body .projectsWrap .projectText {
+    margin-bottom: 40px;
   }
   body .projectsWrap ul .leftObj,
   body .projectsWrap ul .rightObj {
