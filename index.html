@@ -99,8 +99,8 @@
         </div>
       </a>
     </nav>
-
-    <!-- <script>
+<!-- 
+    <script>
       document.addEventListener("DOMContentLoaded", () => {
         const nav = document.querySelector(".notch-bar");
         if (!nav) return;
@@ -489,170 +489,8 @@
         <div class="linkIcon"></div>
       </div>
     </footer>
-
-
-        <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // 뷰포트 너비 확인 함수
-        const isMobile = () => window.innerWidth <= 768;
-
-        // 스무스 스크롤 관련 변수
-        let scrollY = window.scrollY;
-        let currentY = window.scrollY;
-        const speed = 0.1;
-        let isSmoothScrollActive = !isMobile();
-
-        // 스크롤 이벤트 핸들러
-        const handleWheel = (e) => {
-          e.preventDefault();
-          scrollY += e.deltaY;
-          scrollY = Math.max(0, Math.min(scrollY, document.body.scrollHeight - window.innerHeight));
-        };
-
-        // 스무스 스크롤 함수
-        function smoothScroll() {
-          if (isSmoothScrollActive) {
-            currentY += (scrollY - currentY) * speed;
-            window.scrollTo(0, currentY);
-          }
-          requestAnimationFrame(smoothScroll);
-        }
-
-        // 스크롤 이벤트 및 스무스 스크롤 초기화
-        if (!isMobile()) {
-          window.addEventListener("wheel", handleWheel, { passive: false });
-          smoothScroll();
-        }
-
-        // 리사이즈 시 스크롤 이벤트 동적 관리
-        window.addEventListener("resize", () => {
-          const wasMobile = isSmoothScrollActive === false;
-          isSmoothScrollActive = !isMobile();
-
-          if (isMobile() && !wasMobile) {
-            window.removeEventListener("wheel", handleWheel);
-          } else if (!isMobile() && wasMobile) {
-            window.addEventListener("wheel", handleWheel, { passive: false });
-          }
-        });
-
-        // Notch-bar 네비게이션 로직
-        if (!isMobile()) {
-          const nav = document.querySelector(".notch-bar");
-          if (!nav) return;
-
-          const navLinks = Array.from(nav.querySelectorAll(".nav-item"));
-
-          const idFromHref = (href) => {
-            if (!href) return null;
-            const idx = href.indexOf("#");
-            if (idx === -1) return null;
-            return href.slice(idx + 1);
-          };
-
-          const map = new Map();
-          navLinks.forEach((link) => {
-            const id = idFromHref(link.getAttribute("href"));
-            if (!id) return;
-            const sec = document.getElementById(id);
-            if (sec) map.set(id, { link, section: sec });
-
-            link.addEventListener("click", (e) => {
-              e.preventDefault();
-              if (!sec) return;
-              scrollY = sec.offsetTop;
-              setActiveLink(link);
-            });
-          });
-
-          if (map.size === 0) return;
-
-          const ratioMap = new Map();
-          map.forEach((v, id) => ratioMap.set(id, 0));
-
-          const observer = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                const id = entry.target.id;
-                ratioMap.set(id, entry.intersectionRatio);
-              });
-
-              let bestId = null;
-              let bestRatio = 0;
-              ratioMap.forEach((r, id) => {
-                if (r > bestRatio) {
-                  bestRatio = r;
-                  bestId = id;
-                }
-              });
-
-              if (bestId) {
-                const { link } = map.get(bestId);
-                setActiveLink(link);
-              }
-            },
-            {
-              root: null,
-              rootMargin: "-25% 0px -40% 0px",
-              threshold: Array.from({ length: 21 }, (_, i) => i / 20),
-            }
-          );
-
-          map.forEach(({ section }) => observer.observe(section));
-
-          function setActiveLink(activeLink) {
-            navLinks.forEach((l) => l.classList.toggle("active", l === activeLink));
-          }
-
-          function initialActivateByViewportCenter() {
-            const viewportCenter = window.innerHeight / 2;
-            let closest = { id: null, dist: Infinity };
-            map.forEach(({ section }, id) => {
-              const rect = section.getBoundingClientRect();
-              const sectionCenter = rect.top + rect.height / 2;
-              const dist = Math.abs(sectionCenter - viewportCenter);
-              if (dist < closest.dist) closest = { id, dist };
-            });
-            if (closest.id) {
-              setActiveLink(map.get(closest.id).link);
-            }
-          }
-          initialActivateByViewportCenter();
-
-          window.addEventListener("resize", () => initialActivateByViewportCenter());
-        }
-
-        // 모바일 네비게이션 토글
-        const hamburger = document.querySelector(".mobileHeader .rightArea");
-        const mobileNav = document.querySelector(".mobile-nav");
-        if (hamburger && mobileNav) {
-          hamburger.addEventListener("click", () => {
-            mobileNav.classList.toggle("active");
-          });
-
-          mobileNav.querySelectorAll("a").forEach((link) => {
-            link.addEventListener("click", () => {
-              mobileNav.classList.remove("active");
-            });
-          });
-        }
-      });
-
-      // AOS 초기화
-      AOS.init({
-        startEvent: "DOMContentLoaded",
-        offset: 50,
-        duration: 800,
-        once: true, // 모바일 성능 개선을 위해 한 번만 애니메이션 실행
-      });
-    </script>
   </body>
 
-
-
-
-
-<!-- 
   <script>
     let scrollY = window.scrollY;
     let currentY = window.scrollY;
@@ -724,5 +562,5 @@
       duration: 800, // 애니메이션 지속 시간
       once: false, // 스크롤 시 반복 애니메이션 허용
     });
-  </script> -->
+  </script>
 </html>
