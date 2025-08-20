@@ -564,7 +564,7 @@ body .content1 .content1Wrap .content1Text {
 }
 @media (max-width: 480px) {
   body .content1 .content1Wrap {
-    padding: 60px 20px;
+    padding: 40px 20px;
   }
   body .content1 .content1Wrap h2 {
     font-size: 2.4rem;
@@ -820,7 +820,6 @@ body .projectsWrap ul .rightObj .imgArea img {
   display: block;
 }
 body .projectsWrap ul .rightObj .imgArea:hover img {
-  transform: scale(1.02);
   filter: brightness(0.6);
 }
 body .projectsWrap ul .rightObj .imgArea:hover::before {
@@ -897,8 +896,6 @@ body .projectsWrap ul .leftObj .textArea .topText span {
 body .projectsWrap ul .leftObj .imgArea {
   position: relative;
   width: 70%;
-  overflow-x: hidden; /* 가로 스크롤 막기 */
-  overflow-y: auto; /* 세로 스크롤 허용 */
 }
 body .projectsWrap ul .leftObj .imgArea img {
   width: 100%;
@@ -908,7 +905,6 @@ body .projectsWrap ul .leftObj .imgArea img {
   display: block;
 }
 body .projectsWrap ul .leftObj .imgArea:hover img {
-  transform: scale(1.02);
   filter: brightness(0.6);
 }
 body .projectsWrap ul .leftObj .imgArea:hover::before {

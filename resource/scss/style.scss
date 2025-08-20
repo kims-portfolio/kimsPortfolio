@@ -669,12 +669,13 @@ body {
 
     @media (max-width: 480px) {
       .content1Wrap {
-        padding: 60px 20px;
+        padding: 40px 20px;
 
         h2 {
           font-size: 2.4rem;
           margin-bottom: 20px;
           font-weight: 600;
+          
           
         }
 
@@ -984,7 +985,6 @@ body {
 
           &:hover {
             img {
-              transform: scale(1.02);
               filter: brightness(
                 0.6
               ); // 이미지 자체를 50% 어둡게 하는 방법도 있음
@@ -1079,9 +1079,7 @@ body {
 
         .imgArea {
           position: relative; // 반드시 필요
-          width: 70%;
-          overflow-x: hidden; /* 가로 스크롤 막기 */
-          overflow-y: auto; /* 세로 스크롤 허용 */
+          width: 70%;          
 
           img {
             width: 100%;
@@ -1091,9 +1089,8 @@ body {
             display: block;
           }
 
-          &:hover {
+                  &:hover {
             img {
-              transform: scale(1.02);
               filter: brightness(
                 0.6
               ); // 이미지 자체를 50% 어둡게 하는 방법도 있음
