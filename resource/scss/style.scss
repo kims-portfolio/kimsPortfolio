@@ -21,8 +21,9 @@
   font-weight: 400;
   font-style: normal;
 }
-html, body {  
-  overflow-y: auto;   /* 세로 스크롤 허용 */
+html,
+body {
+  overflow-y: auto; /* 세로 스크롤 허용 */
   touch-action: pan-y;
 }
 
@@ -30,7 +31,7 @@ html, body {
 body {
   background-color: #000;
   margin: 0;
-  
+
   font-family: "SF_HambakSnow", sans-serif;
   box-sizing: border-box;
 
@@ -49,12 +50,40 @@ body {
       padding: 20px 50px;
 
       .rightArea {
-
         button {
-        all: unset;
-        color: #fff;
-        font-size: 1.8rem;
-        cursor: pointer;
+          all: unset;
+          color: #fff;
+          font-size: 1.8rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .mobileHeader {
+      display: flex;
+      position: fixed;
+      top: 0;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #333333;
+      padding: 20px 20px;
+
+      .leftArea {
+        .logo {
+          width: 80px;
+        }
+      }
+
+      .rightArea {
+        button {
+          all: unset;
+          font-size: 2rem;
+          color: #fff;
+          cursor: pointer;
+          line-height: 1;
+          margin-bottom: 8px;
         }
       }
     }
@@ -114,8 +143,8 @@ body {
     gap: 30px;
     padding: 28px 0;
     z-index: 10;
-      overflow-x: hidden; /* 가로 스크롤 막기 */
-  overflow-y: auto;   /* 세로 스크롤 허용 */
+    overflow-x: hidden; /* 가로 스크롤 막기 */
+    overflow-y: auto; /* 세로 스크롤 허용 */
     border-right: 1px solid #333;
   }
   @media (max-width: 768px) {
@@ -450,8 +479,8 @@ body {
       top: 50%;
       transform: translate(-50%, -50%);
       animation: scroll 60s linear infinite;
-        overflow-x: hidden; /* 가로 스크롤 막기 */
-  overflow-y: auto;   /* 세로 스크롤 허용 */
+      overflow-x: hidden; /* 가로 스크롤 막기 */
+      overflow-y: auto; /* 세로 스크롤 허용 */
 
       img {
         width: clamp(200px, 20vw, 350px);
@@ -478,8 +507,8 @@ body {
       position: relative;
       width: 100%;
       height: 100vh; // 화면 전체 높이 기준
-        overflow-x: hidden; /* 가로 스크롤 막기 */
-  overflow-y: auto;   /* 세로 스크롤 허용 */
+      overflow-x: hidden; /* 가로 스크롤 막기 */
+      overflow-y: auto; /* 세로 스크롤 허용 */
 
       .center-content {
         position: absolute;
@@ -515,6 +544,7 @@ body {
       }
     }
   }
+
   @media (max-width: 768px) {
     .mainVisual {
       padding-top: 180px;
@@ -540,9 +570,21 @@ body {
   @media (max-width: 480px) {
     .mainVisual {
       padding: 180px 0px 0px 0px;
+
+      .bgDecoWrap {
+        .deco1 {
+          width: 650px;
+        }
+      }
+
+      .slider-wrapper {
+        margin-top: 0px;
+      }
+
       .mvTextWrap {
         h1 {
-          font-size: 3.9rem;
+          font-size: 3rem;
+          margin-top: 20px;
         }
       }
 
@@ -551,7 +593,7 @@ body {
 
         .center-content {
           h3 {
-            font-size: 2.4rem;
+            font-size: 2rem;
           }
         }
       }
@@ -629,6 +671,16 @@ body {
       .content1Wrap {
         padding: 60px 20px;
 
+        h2 {
+          font-size: 2.4rem;
+          margin-bottom: 20px;
+          
+        }
+
+        br {
+          display: none;
+        }
+
         .content1Text {
           font-size: 1.2rem;
         }
@@ -639,7 +691,7 @@ body {
         }
 
         img {
-          width: 400px;
+          width: 300px;
           margin: 30px 0;
         }
       }
@@ -789,6 +841,7 @@ body {
 
         h2 {
           padding-left: 0;
+          font-size: 3rem;
         }
 
         p {
@@ -917,8 +970,8 @@ body {
         .imgArea {
           position: relative; // 반드시 필요
           width: 70%;
-            overflow-x: hidden; /* 가로 스크롤 막기 */
-  overflow-y: auto;   /* 세로 스크롤 허용 */
+          overflow-x: hidden; /* 가로 스크롤 막기 */
+          overflow-y: auto; /* 세로 스크롤 허용 */
 
           img {
             width: 100%;
@@ -1026,8 +1079,8 @@ body {
         .imgArea {
           position: relative; // 반드시 필요
           width: 70%;
-            overflow-x: hidden; /* 가로 스크롤 막기 */
-  overflow-y: auto;   /* 세로 스크롤 허용 */
+          overflow-x: hidden; /* 가로 스크롤 막기 */
+          overflow-y: auto; /* 세로 스크롤 허용 */
 
           img {
             width: 100%;
@@ -1183,7 +1236,7 @@ body {
     }
   }
 
-    @media (max-width: 1300px) {
+  @media (max-width: 1300px) {
     .bottomTextWrap {
       flex-direction: column;
 

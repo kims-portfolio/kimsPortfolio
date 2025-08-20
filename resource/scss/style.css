@@ -18,7 +18,8 @@
   font-weight: 400;
   font-style: normal;
 }
-html, body {
+html,
+body {
   overflow-y: auto; /* 세로 스크롤 허용 */
   touch-action: pan-y;
 }
@@ -55,6 +56,28 @@ body .mobileHeader {
     color: #fff;
     font-size: 1.8rem;
     cursor: pointer;
+  }
+}
+@media (max-width: 480px) {
+  body .mobileHeader {
+    display: flex;
+    position: fixed;
+    top: 0;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #333333;
+    padding: 20px 20px;
+  }
+  body .mobileHeader .leftArea .logo {
+    width: 80px;
+  }
+  body .mobileHeader .rightArea button {
+    all: unset;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    line-height: 1;
+    margin-bottom: 8px;
   }
 }
 body .mobile-nav {
@@ -464,14 +487,21 @@ body .mainVisual .mvSeconWrap video {
   body .mainVisual {
     padding: 180px 0px 0px 0px;
   }
+  body .mainVisual .bgDecoWrap .deco1 {
+    width: 650px;
+  }
+  body .mainVisual .slider-wrapper {
+    margin-top: 0px;
+  }
   body .mainVisual .mvTextWrap h1 {
-    font-size: 3.9rem;
+    font-size: 3rem;
+    margin-top: 20px;
   }
   body .mainVisual .mvSeconWrap {
     height: 40vh;
   }
   body .mainVisual .mvSeconWrap .center-content h3 {
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
 }
 body .content1 {
@@ -536,6 +566,13 @@ body .content1 .content1Wrap .content1Text {
   body .content1 .content1Wrap {
     padding: 60px 20px;
   }
+  body .content1 .content1Wrap h2 {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+  }
+  body .content1 .content1Wrap br {
+    display: none;
+  }
   body .content1 .content1Wrap .content1Text {
     font-size: 1.2rem;
   }
@@ -544,7 +581,7 @@ body .content1 .content1Wrap .content1Text {
     margin-bottom: 10px;
   }
   body .content1 .content1Wrap img {
-    width: 400px;
+    width: 300px;
     margin: 30px 0;
   }
 }
@@ -667,6 +704,7 @@ body .service-details .service-item .image img {
   }
   body .service-details .projectText h2 {
     padding-left: 0;
+    font-size: 3rem;
   }
   body .service-details .projectText p {
     text-align: center;
