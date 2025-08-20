@@ -1,576 +1,343 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2025 PORTFOLIO</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"
-    />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <style>
-      /* 인라인 CSS로 모바일 네비게이션 및 스크롤 관련 스타일 추가 */
-      html,
-      body {
-        overflow-x: hidden;
-        overflow-y: auto;
-        height: 100%;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2025 PORTFOLIO</title>
 
-      .mobile-nav {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #fff;
-        z-index: 1000;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-      }
+  <!-- Reset & Styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css" />
+  <link rel="stylesheet" href="resource/scss/style.css" />
 
-      .mobile-nav.active {
-        display: block;
-        transform: translateX(0);
-      }
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
 
-      .mobile-nav ul {
-        list-style: none;
-        padding: 20px;
-        margin: 0;
-      }
+<body>
+  <!-- Mobile Header -->
+  <header class="mobileHeader">
+    <div class="leftArea">
+      <svg class="logo"></svg>
+    </div>
+    <div class="rightArea">☰</div>
+  </header>
 
-      .mobile-nav li {
-        margin: 10px 0;
-      }
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav">
+    <ul>
+      <li><a href="#mainVisual">Main Visual</a></li>
+      <li><a href="#content1">Content 1</a></li>
+      <li><a href="#service-details">Service Details</a></li>
+      <li><a href="#projectsWrap">Projects</a></li>
+      <li><a href="#bottomTextWrap">Contact</a></li>
+    </ul>
+  </nav>
 
-      .mobile-nav a {
-        text-decoration: none;
-        color: #333;
-        font-size: 18px;
-      }
+  <!-- Notch Navigation -->
+  <nav class="notch-bar">
+    <a class="nav-item active" href="#mainVisual">
+      <div class="base"></div>
+      <div class="circle"><div></div><div></div></div>
+    </a>
+    <a class="nav-item" href="#content1">
+      <div class="base"></div>
+      <div class="circle"><div></div><div></div></div>
+    </a>
+    <a class="nav-item" href="#service-details">
+      <div class="base"></div>
+      <div class="circle"><div></div><div></div></div>
+    </a>
+    <a class="nav-item" href="#projectsWrap">
+      <div class="base"></div>
+      <div class="circle"><div></div><div></div></div>
+    </a>
+    <a class="nav-item" href="#bottomTextWrap">
+      <div class="base"></div>
+      <div class="circle"><div></div><div></div></div>
+    </a>
+  </nav>
 
-      .mobileHeader .rightArea {
-        cursor: pointer;
-        font-size: 24px;
-        padding: 10px;
-      }
+  <!-- Desktop Header -->
+  <header>
+    <div class="headerWrap">
+      <svg class="logo"></svg>
+      <nav class="gnb">
+        <ul>
+          <li><a href="#content1">About</a></li>
+          <li><a href="#content2">Projects</a></li>
+          <li><a href="#content3">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="portfolioDown" href="#">PORTFOLIO 🡇</a>
+    </div>
+  </header>
 
-      /* style.css에 정의된 스타일을 덮어쓰지 않도록 최소한의 스타일만 추가 */
-      @media (min-width: 769px) {
-        .mobileHeader,
-        .mobile-nav {
-          display: none;
-        }
-      }
+  <!-- Main Visual -->
+  <section class="mainVisual" id="mainVisual">
+    <div class="mvTextWrap">
+      <span data-aos="fade-down" data-aos-delay="800">2025</span>
+      <h1 data-aos="fade-up" data-aos-delay="200" class="mvTitle">PORTFOLIO</h1>
+      <p data-aos="fade-up" data-aos-delay="600">デザインで語り、体験で納得させる。</p>
+    </div>
 
-      @media (max-width: 768px) {
-        .notch-bar,
-        header:not(.mobileHeader) {
-          display: none;
-        }
-      }
-    </style>
-    <link rel="stylesheet" href="resource/scss/style.css" />
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  </head>
-  <body>
-    <!-- 주석 처리된 topBtn 코드 유지 -->
-    <!-- <div class="topBtn"></div> -->
-
-    <header class="mobileHeader">
-      <div class="leftArea">
-        <svg class="logo"></svg>
+    <div class="slider-wrapper" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1300">
+      <div class="slider-track">
+        <!-- 이미지 1세트 -->
+        <img src="./resource/img/img01.jpg" />
+        <img src="./resource/img/img02.jpg" />
+        <img src="./resource/img/img01.jpg" />
+        <img src="./resource/img/img02.jpg" />
+        <img src="./resource/img/img01.jpg" />
+        <img src="./resource/img/img02.jpg" />
+        <!-- 이미지 2세트 (반복) -->
+        <img src="./resource/img/img01.jpg" />
+        <img src="./resource/img/img02.jpg" />
+        <img src="./resource/img/img01.jpg" />
+        <img src="./resource/img/img02.jpg" />
+        <img src="./resource/img/img01.jpg" />
+        <img src="./resource/img/img02.jpg" />
       </div>
-      <div class="rightArea">☰</div>
-    </header>
+    </div>
 
-    <nav class="mobile-nav">
-      <ul>
-        <li><a href="#mainVisual">Main Visual</a></li>
-        <li><a href="#content1">Content 1</a></li>
-        <li><a href="#service-details">Service Details</a></li>
-        <li><a href="#projectsWrap">Projects</a></li>
-        <li><a href="#bottomTextWrap">Contact</a></li>
+    <div class="mvSeconWrap">
+      <div class="center-content">
+        <h3 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+          Design with clarity.<br />Build with purpose.
+        </h3>
+      </div>
+      <video src="./resource/img/mvVideo.mp4" autoplay muted loop playsinline></video>
+    </div>
+
+    <div class="bgDecoWrap" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="100">
+      <img class="deco1" src="./resource/img/bgImg01.png" alt="" />
+    </div>
+  </section>
+
+  <!-- Content 1 -->
+  <section class="content1" id="content1">
+    <div class="content1Wrap">
+      <h2 data-aos="fade-up" data-aos-delay="300">Evolving Experiences,</h2>
+      <h2 data-aos="fade-up" data-aos-delay="300">Empowering Outcomes.</h2>
+      <div data-aos="fade-up" data-aos-delay="300">
+        <img src="./resource/img/con1Img.png" alt="" />
+        <p class="content1Text">
+          フロントエンドとデザインを同時に実現し、<br />
+          ユーザー中心の実質的な成果を生み出します。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Details -->
+  <section class="service-details" id="service-details">
+    <div class="projectText">
+      <h2 data-aos="fade-down">Skills</h2>
+      <p data-aos="fade-down">
+        多様なプロジェクト経験を通じて、デザインと技術を融合し、<br />
+        ユーザー中心の創造的な成果を生み出してきました。
+      </p>
+    </div>
+
+    <!-- Graphic Design -->
+    <div class="service-item">
+      <h3 class="title" data-aos="fade-down">GRAPHIC DESIGN</h3>
+      <ul class="features" data-aos="fade-down" data-aos-delay="200">
+        <li>ブランドアイデンティティ設計</li>
+        <li>広告・プロモーションデザイン</li>
+        <li>ビジュアルコミュニケーション</li>
+        <li>デザインシステム開発</li>
       </ul>
-    </nav>
-
-    <nav class="notch-bar">
-      <a class="nav-item active" href="#mainVisual">
-        <div class="base"></div>
-        <div class="circle">
-          <div></div>
-          <div></div>
-        </div>
-      </a>
-      <a class="nav-item" href="#content1">
-        <div class="base"></div>
-        <div class="circle">
-          <div></div>
-          <div></div>
-        </div>
-      </a>
-      <a class="nav-item" href="#service-details">
-        <div class="base"></div>
-        <div class="circle">
-          <div></div>
-          <div></div>
-        </div>
-      </a>
-      <a class="nav-item" href="#projectsWrap">
-        <div class="base"></div>
-        <div class="circle">
-          <div></div>
-          <div></div>
-        </div>
-      </a>
-      <a class="nav-item" href="#bottomTextWrap">
-        <div class="base"></div>
-        <div class="circle">
-          <div></div>
-          <div></div>
-        </div>
-      </a>
-    </nav>
-
-    <header>
-      <div class="headerWrap">
-        <svg class="logo"></svg>
-        <nav class="gnb">
-          <ul>
-            <li><a href="#content1">About</a></li>
-            <li><a href="#content2">Projects</a></li>
-            <li><a href="#content3">Contact</a></li>
-          </ul>
-        </nav>
-        <a class="portfolioDown" href="#">PORTFOLIO 🡇 </a>
+      <div class="image" data-aos="fade-down" data-aos-delay="300">
+        <img src="./resource/img/graphicIcon.png" alt="Graphic Design" />
       </div>
-    </header>
+    </div>
 
-    <section class="mainVisual" id="mainVisual">
-      <div class="mvTextWrap">
-        <span data-aos="fade-down" data-aos-delay="800">2025</span>
-        <h1 data-aos="fade-up" data-aos-delay="200" class="mvTitle">
-          PORTFOLIO
-        </h1>
-        <p data-aos="fade-up" data-aos-delay="600">
-          デザインで語り、体験で納得させる。
-        </p>
-      </div>
-
-      <div
-        class="slider-wrapper"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        data-aos-delay="1300"
-      >
-        <div class="slider-track">
-          <img src="./resource/img/img01.jpg" loading="lazy" />
-          <img src="./resource/img/img02.jpg" loading="lazy" />
-          <img src="./resource/img/img01.jpg" loading="lazy" />
-          <img src="./resource/img/img02.jpg" loading="lazy" />
-          <img src="./resource/img/img01.jpg" loading="lazy" />
-          <img src="./resource/img/img02.jpg" loading="lazy" />
-          <img src="./resource/img/img01.jpg" loading="lazy" />
-          <img src="./resource/img/img02.jpg" loading="lazy" />
-          <img src="./resource/img/img01.jpg" loading="lazy" />
-          <img src="./resource/img/img02.jpg" loading="lazy" />
-          <img src="./resource/img/img01.jpg" loading="lazy" />
-          <img src="./resource/img/img02.jpg" loading="lazy" />
-        </div>
-      </div>
-
-      <div class="mvSeconWrap">
-        <div class="center-content">
-          <h3 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-            Design with clarity. <br />
-            Build with purpose.
-          </h3>
-        </div>
-        <video
-          src="./resource/img/mvVideo.mp4"
-          autoplay
-          muted
-          loop
-          playsinline
-        ></video>
-      </div>
-
-      <div
-        class="bgDecoWrap"
-        data-aos="fade-up"
-        data-aos-duration="2000"
-        data-aos-delay="100"
-      >
-        <img class="deco1" src="./resource/img/bgImg01.png" alt="" loading="lazy" />
-      </div>
-    </section>
-
-    <section class="content1" id="content1">
-      <div class="content1Wrap">
-        <h2
-          data-aos="fade-up"
-          data-aos-duration="1000"
-          data-aos-delay="300"
-          class="content1Title"
-        >
-          Evolving Experiences,<br />
-        </h2>
-        <h2
-          data-aos="fade-up"
-          data-aos-duration="1000"
-          data-aos-delay="300"
-          class="content1Title"
-        >
-          Empowering Outcomes. <br />
-        </h2>
-        <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-          <img
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            src="./resource/img/con1Img.png"
-            alt=""
-            loading="lazy"
-          />
-          <p class="content1Text">
-            フロントエンドとデザインを同時に実現し、<br />ユーザー中心の実質的な成果を生み出します。
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="service-details" id="service-details">
-      <div class="projectText">
-        <h2 data-aos="fade-down" data-aos-duration="500" data-aos-delay="100">
-          Skills
-        </h2>
-        <p data-aos="fade-down" data-aos-duration="500" data-aos-delay="100">
-          多様なプロジェクト経験を通じて、デザインと技術を融合し、<br />ユーザー中心の創造的な成果を生み出してきました。
-        </p>
-      </div>
-      <div class="service-item" id="service-detail2">
-        <h3 class="title" data-aos="fade-down">GRAPHIC DESIGN</h3>
-        <ul class="features" data-aos="fade-down" data-aos-delay="200">
-          <li>ブランドアイデンティティ設計</li>
-          <li>広告・プロモーションデザイン</li>
-          <li>ビジュアルコミュニケーション</li>
-          <li>デザインシステム開発</li>
-        </ul>
-        <div class="image" data-aos="fade-down" data-aos-delay="300">
-          <img src="./resource/img/graphicIcon.png" alt="Integration" loading="lazy" />
-        </div>
-      </div>
-
-      <div class="service-item" id="service-detail2">
-        <h3 class="title" data-aos="fade-down">UI/UX</h3>
-        <ul class="features" data-aos="fade-down" data-aos-delay="100">
-          <li>ユーザーインターフェース設計</li>
-          <li>ワイヤーフレーム・プロトタイプ</li>
-          <li>インタラクションデザイン</li>
-        </ul>
-        <div class="image" data-aos="fade-down" data-aos-delay="200">
-          <img src="./resource/img/codeIcon.png" alt="Integration" loading="lazy" />
-        </div>
-      </div>
-
-      <div class="service-item" id="service-detail2">
-        <h3 class="title" data-aos="fade-down">FRONT-END</h3>
-        <ul class="features" data-aos="fade-down" data-aos-delay="100">
-          <li>HTML5 / CSS3 / JavaScript</li>
-          <li>インタラクション実装</li>
-          <li>ユーザー中心のUI開発</li>
-          <li>マルチデバイス対応Webサイト制作</li>
-        </ul>
-        <div class="image" data-aos="fade-down" data-aos-delay="200">
-          <img src="./resource/img/htmlIcon.png" alt="Integration" loading="lazy" />
-        </div>
-      </div>
-
-      <div class="service-item" id="service-detail2">
-        <h3 class="title" data-aos="fade-down">MOTION-DESIGN</h3>
-        <ul class="features" data-aos="fade-down" data-aos-delay="100">
-          <li>モーショングラフィックス</li>
-          <li>インタラクションアニメーション</li>
-          <li>ブランドムービー制作</li>
-          <li>2Dキャラクター動作アニメーション</li>
-        </ul>
-        <div class="image" data-aos="fade-down" data-aos-delay="200">
-          <img src="./resource/img/videoIcon.png" alt="Integration" loading="lazy" />
-        </div>
-      </div>
-    </section>
-
-    <section class="projectsWrap" id="projectsWrap">
-      <div
-        class="projectText"
-        data-aos="fade-right"
-        data-aos-duration="1000"
-        data-aos-delay="100"
-      >
-        <h2>Projects</h2>
-      </div>
-      <ul>
-        <li class="leftObj">
-          <div
-            class="textArea"
-            data-aos="fade-left"
-            data-aos-duration="1000"
-            data-aos-delay="300"
-          >
-            <div class="topText">
-              <h4>PROJECT1</h4>
-              <span>인터랙티브 반응형WEB</span>
-            </div>
-            <div class="bottomArea">
-              <ul>
-                <li><img src="./resource/img/phoIcon.png" alt="" loading="lazy" /></li>
-                <li><img src="./resource/img/aiIcon.png" alt="" loading="lazy" /></li>
-                <li><img src="./resource/img/aeIcon.png" alt="" loading="lazy" /></li>
-              </ul>
-              <p>나는짱이고 그리고 짱이다 왜냐하면 짱이긴때<br />그리고 너는</p>
-            </div>
-          </div>
-
-          <div
-            class="imgArea"
-            data-aos="fade-left"
-            data-aos-duration="1800"
-            data-aos-delay="100"
-          >
-            <a href="#">
-              <img src="./resource/img/graImg.jpg" alt="" loading="lazy" />
-            </a>
-          </div>
-        </li>
-
-        <li class="rightObj">
-          <div
-            class="textArea"
-            data-aos="fade-left"
-            data-aos-duration="1000"
-            data-aos-delay="300"
-          >
-            <div class="topText">
-              <h4>PROJECT21</h4>
-              <span>인터랙티브 반응형WEB</span>
-            </div>
-            <div class="bottomArea">
-              <ul>
-                <li><img src="./resource/img/phoIcon.png" alt="" loading="lazy" /></li>
-                <li><img src="./resource/img/phoIcon.png" alt="" loading="lazy" /></li>
-                <li><img src="./resource/img/phoIcon.png" alt="" loading="lazy" /></li>
-                <li><img src="./resource/img/phoIcon.png" alt="" loading="lazy" /></li>
-                <li><img src="./resource/img/phoIcon.png" alt="" loading="lazy" /></li>
-              </ul>
-              <p>나는짱이고 그리고 짱이다 왜냐하면 짱이긴때<br />그리고 너는</p>
-            </div>
-          </div>
-
-          <div
-            class="imgArea"
-            data-aos="fade-left"
-            data-aos-duration="1800"
-            data-aos-delay="100"
-          >
-            <a href="#">
-              <img src="./resource/img/graImg.jpg" alt="" loading="lazy" />
-            </a>
-          </div>
-        </li>
+    <!-- UI/UX -->
+    <div class="service-item">
+      <h3 class="title" data-aos="fade-down">UI/UX</h3>
+      <ul class="features" data-aos="fade-down" data-aos-delay="100">
+        <li>ユーザーインターフェース設計</li>
+        <li>ワイヤーフレーム・プロトタイプ</li>
+        <li>インタラクションデザイン</li>
       </ul>
-    </section>
-
-    <section class="bottomTextWrap" id="bottomTextWrap">
-      <div class="leftArea">
-        <h1 data-aos="fade-right" data-aos-delay="400" data-aos-duration="1000">
-          INSIGHT,
-        </h1>
-        <h1 data-aos="fade-right" data-aos-delay="500" data-aos-duration="1000">
-          NERVE,
-        </h1>
-        <h1 data-aos="fade-right" data-aos-delay="600" data-aos-duration="1000">
-          VIEW
-        </h1>
-        <img src="./resource/img/bgImg02.png" alt="" class="deco2" loading="lazy" />
+      <div class="image" data-aos="fade-down" data-aos-delay="200">
+        <img src="./resource/img/codeIcon.png" alt="UI/UX" />
       </div>
+    </div>
 
-      <div
-        class="rightArea"
-        data-aos="fade-left"
-        data-aos-delay="700"
-        data-aos-duration="1000"
-      >
-        <p>
-          新しい視点と可能性を探求し、思考と感覚を自由に広げます。<br />
-          小さな発見のひとつひとつがより大きな創造へとつながるよう、<br />
-          絶えず経験を積み重ねていきます。
-        </p>
+    <!-- Front-End -->
+    <div class="service-item">
+      <h3 class="title" data-aos="fade-down">FRONT-END</h3>
+      <ul class="features" data-aos="fade-down" data-aos-delay="100">
+        <li>HTML5 / CSS3 / JavaScript</li>
+        <li>インタラクション実装</li>
+        <li>ユーザー中心のUI開発</li>
+        <li>マルチデバイス対応Webサイト制作</li>
+      </ul>
+      <div class="image" data-aos="fade-down" data-aos-delay="200">
+        <img src="./resource/img/htmlIcon.png" alt="Front-End" />
       </div>
-    </section>
+    </div>
 
-    <footer>
-      <div class="projectText">
-        <h4>© 2025 KIM YOUNGUK. PORTFOLIO. ALL RIGHTS RESERVED.</h4>
-        <div class="linkIcon"></div>
+    <!-- Motion Design -->
+    <div class="service-item">
+      <h3 class="title" data-aos="fade-down">MOTION-DESIGN</h3>
+      <ul class="features" data-aos="fade-down" data-aos-delay="100">
+        <li>モーショングラフィックス</li>
+        <li>インタラクションアニメーション</li>
+        <li>ブランドムービー制作</li>
+        <li>2Dキャラクター動作アニメーション</li>
+      </ul>
+      <div class="image" data-aos="fade-down" data-aos-delay="200">
+        <img src="./resource/img/videoIcon.png" alt="Motion Design" />
       </div>
-    </footer>
+    </div>
+  </section>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // 뷰포트 너비 확인 함수
-        const isMobile = () => window.innerWidth <= 768;
+  <!-- Projects -->
+  <section class="projectsWrap" id="projectsWrap">
+    <div class="projectText" data-aos="fade-right" data-aos-delay="100">
+      <h2>Projects</h2>
+    </div>
+    <ul>
+      <li class="leftObj">
+        <div class="textArea" data-aos="fade-left" data-aos-delay="300">
+          <div class="topText">
+            <h4>PROJECT1</h4>
+            <span>인터랙티브 반응형WEB</span>
+          </div>
+          <div class="bottomArea">
+            <ul>
+              <li><img src="./resource/img/phoIcon.png" alt="" /></li>
+              <li><img src="./resource/img/aiIcon.png" alt="" /></li>
+              <li><img src="./resource/img/aeIcon.png" alt="" /></li>
+            </ul>
+            <p>
+              나는짱이고 그리고 짱이다 왜냐하면 짱이긴때<br />
+              그리고 너는
+            </p>
+          </div>
+        </div>
+        <div class="imgArea" data-aos="fade-left" data-aos-delay="100">
+          <a href="#"><img src="./resource/img/graImg.jpg" alt="" /></a>
+        </div>
+      </li>
 
-        // 스무스 스크롤 관련 변수
-        let scrollY = window.scrollY;
-        let currentY = window.scrollY;
-        const speed = 0.1;
-        let isSmoothScrollActive = !isMobile();
+      <li class="rightObj">
+        <div class="textArea" data-aos="fade-left" data-aos-delay="300">
+          <div class="topText">
+            <h4>PROJECT21</h4>
+            <span>인터랙티브 반응형WEB</span>
+          </div>
+          <div class="bottomArea">
+            <ul>
+              <li><img src="./resource/img/phoIcon.png" alt="" /></li>
+              <li><img src="./resource/img/phoIcon.png" alt="" /></li>
+              <li><img src="./resource/img/phoIcon.png" alt="" /></li>
+              <li><img src="./resource/img/phoIcon.png" alt="" /></li>
+              <li><img src="./resource/img/phoIcon.png" alt="" /></li>
+            </ul>
+            <p>
+              나는짱이고 그리고 짱이다 왜냐하면 짱이긴때<br />
+              그리고 너는
+            </p>
+          </div>
+        </div>
+        <div class="imgArea" data-aos="fade-left" data-aos-delay="100">
+          <a href="#"><img src="./resource/img/graImg.jpg" alt="" /></a>
+        </div>
+      </li>
+    </ul>
+  </section>
 
-        // 스크롤 이벤트 핸들러
-        const handleWheel = (e) => {
+  <!-- Bottom Text -->
+  <section class="bottomTextWrap" id="bottomTextWrap">
+    <div class="leftArea">
+      <h1 data-aos="fade-right" data-aos-delay="400">INSIGHT,</h1>
+      <h1 data-aos="fade-right" data-aos-delay="500">NERVE,</h1>
+      <h1 data-aos="fade-right" data-aos-delay="600">VIEW</h1>
+      <img src="./resource/img/bgImg02.png" alt="" class="deco2" />
+    </div>
+    <div class="rightArea" data-aos="fade-left" data-aos-delay="700">
+      <p>
+        新しい視点と可能性を探求し、思考と感覚を自由に広げます。<br />
+        小さな発見のひとつひとつがより大きな創造へとつながるよう、<br />
+        絶えず経験を積み重ねていきます。
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="projectText">
+      <h4>© 2025 KIM YOUNGUK. PORTFOLIO. ALL RIGHTS RESERVED.</h4>
+      <div class="linkIcon"></div>
+    </div>
+  </footer>
+
+  <!-- Smooth Scroll -->
+  <script>
+    let scrollY = window.scrollY;
+    let currentY = window.scrollY;
+    const speed = 0.1;
+
+    window.addEventListener("wheel", (e) => {
+      e.preventDefault();
+      scrollY += e.deltaY;
+      scrollY = Math.max(
+        0,
+        Math.min(scrollY, document.body.scrollHeight - window.innerHeight)
+      );
+    }, { passive: false });
+
+    function smoothScroll() {
+      currentY += (scrollY - currentY) * speed;
+      window.scrollTo(0, currentY);
+      requestAnimationFrame(smoothScroll);
+    }
+    smoothScroll();
+  </script>
+
+  <!-- Nav Active Scroll -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const nav = document.querySelector(".notch-bar");
+      if (!nav) return;
+
+      const navLinks = Array.from(nav.querySelectorAll(".nav-item"));
+      const idFromHref = (href) => href?.split("#")[1] || null;
+
+      const map = new Map();
+      navLinks.forEach((link) => {
+        const id = idFromHref(link.getAttribute("href"));
+        if (!id) return;
+
+        const sec = document.getElementById(id);
+        if (sec) map.set(id, { link, section: sec });
+
+        link.addEventListener("click", (e) => {
           e.preventDefault();
-          scrollY += e.deltaY;
-          scrollY = Math.max(0, Math.min(scrollY, document.body.scrollHeight - window.innerHeight));
-        };
-
-        // 스무스 스크롤 함수
-        function smoothScroll() {
-          if (isSmoothScrollActive) {
-            currentY += (scrollY - currentY) * speed;
-            window.scrollTo(0, currentY);
-          }
-          requestAnimationFrame(smoothScroll);
-        }
-
-        // 스크롤 이벤트 및 스무스 스크롤 초기화
-        if (!isMobile()) {
-          window.addEventListener("wheel", handleWheel, { passive: false });
-          smoothScroll();
-        }
-
-        // 리사이즈 시 스크롤 이벤트 동적 관리
-        window.addEventListener("resize", () => {
-          const wasMobile = isSmoothScrollActive === false;
-          isSmoothScrollActive = !isMobile();
-
-          if (isMobile() && !wasMobile) {
-            window.removeEventListener("wheel", handleWheel);
-          } else if (!isMobile() && wasMobile) {
-            window.addEventListener("wheel", handleWheel, { passive: false });
-          }
+          if (!sec) return;
+          scrollY = sec.offsetTop;
+          setActiveLink(link);
         });
-
-        // Notch-bar 네비게이션 로직
-        if (!isMobile()) {
-          const nav = document.querySelector(".notch-bar");
-          if (!nav) return;
-
-          const navLinks = Array.from(nav.querySelectorAll(".nav-item"));
-
-          const idFromHref = (href) => {
-            if (!href) return null;
-            const idx = href.indexOf("#");
-            if (idx === -1) return null;
-            return href.slice(idx + 1);
-          };
-
-          const map = new Map();
-          navLinks.forEach((link) => {
-            const id = idFromHref(link.getAttribute("href"));
-            if (!id) return;
-            const sec = document.getElementById(id);
-            if (sec) map.set(id, { link, section: sec });
-
-            link.addEventListener("click", (e) => {
-              e.preventDefault();
-              if (!sec) return;
-              scrollY = sec.offsetTop;
-              setActiveLink(link);
-            });
-          });
-
-          if (map.size === 0) return;
-
-          const ratioMap = new Map();
-          map.forEach((v, id) => ratioMap.set(id, 0));
-
-          const observer = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                const id = entry.target.id;
-                ratioMap.set(id, entry.intersectionRatio);
-              });
-
-              let bestId = null;
-              let bestRatio = 0;
-              ratioMap.forEach((r, id) => {
-                if (r > bestRatio) {
-                  bestRatio = r;
-                  bestId = id;
-                }
-              });
-
-              if (bestId) {
-                const { link } = map.get(bestId);
-                setActiveLink(link);
-              }
-            },
-            {
-              root: null,
-              rootMargin: "-25% 0px -40% 0px",
-              threshold: Array.from({ length: 21 }, (_, i) => i / 20),
-            }
-          );
-
-          map.forEach(({ section }) => observer.observe(section));
-
-          function setActiveLink(activeLink) {
-            navLinks.forEach((l) => l.classList.toggle("active", l === activeLink));
-          }
-
-          function initialActivateByViewportCenter() {
-            const viewportCenter = window.innerHeight / 2;
-            let closest = { id: null, dist: Infinity };
-            map.forEach(({ section }, id) => {
-              const rect = section.getBoundingClientRect();
-              const sectionCenter = rect.top + rect.height / 2;
-              const dist = Math.abs(sectionCenter - viewportCenter);
-              if (dist < closest.dist) closest = { id, dist };
-            });
-            if (closest.id) {
-              setActiveLink(map.get(closest.id).link);
-            }
-          }
-          initialActivateByViewportCenter();
-
-          window.addEventListener("resize", () => initialActivateByViewportCenter());
-        }
-
-        // 모바일 네비게이션 토글
-        const hamburger = document.querySelector(".mobileHeader .rightArea");
-        const mobileNav = document.querySelector(".mobile-nav");
-        if (hamburger && mobileNav) {
-          hamburger.addEventListener("click", () => {
-            mobileNav.classList.toggle("active");
-          });
-
-          mobileNav.querySelectorAll("a").forEach((link) => {
-            link.addEventListener("click", () => {
-              mobileNav.classList.remove("active");
-            });
-          });
-        }
       });
 
-      // AOS 초기화
-      AOS.init({
-        startEvent: "DOMContentLoaded",
-        offset: 50,
-        duration: 800,
-        once: true, // 모바일 성능 개선을 위해 한 번만 애니메이션 실행
-      });
-    </script>
-  </body>
+      function setActiveLink(activeLink) {
+        navLinks.forEach((l) => l.classList.toggle("active", l === activeLink));
+      }
+    });
+  </script>
+
+  <!-- AOS Init -->
+  <script>
+    AOS.init({
+      startEvent: "DOMContentLoaded",
+      offset: 50,
+      duration: 800,
+      once: false
+    });
+  </script>
+</body>
 </html>
