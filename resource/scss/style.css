@@ -21,7 +21,7 @@
 html,
 body {
   overflow-y: auto; /* 세로 스크롤 허용 */
-  touch-action: pan-y;
+  overflow-x: hidden;
 }
 
 /* Global Styles */
