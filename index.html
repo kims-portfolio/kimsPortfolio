@@ -21,12 +21,13 @@
       <svg class="logo"></svg>
     </div>
     <div class="rightArea">
-      <button>☰</button>
+      <button class="menuBtn">☰</button>
     </div>
   </header>
 
   <!-- Mobile Navigation -->
-  <nav class="mobile-nav active">
+  <nav class="mobile-nav">
+    <button class="closeBtn">X</button>
     <ul>
       <li><a href="#mainVisual">Main Visual</a></li>
       <li><a href="#content1">Content 1</a></li>
@@ -35,6 +36,49 @@
       <li><a href="#bottomTextWrap">Contact</a></li>
     </ul>
   </nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const menuBtn = document.querySelector(".mobileHeader .rightArea button");
+  const mobileNav = document.querySelector(".mobile-nav");
+  const closeBtn = mobileNav.querySelector(".closeBtn");
+  const navLinks = mobileNav.querySelectorAll("ul li a");
+
+  // 모바일 여부 확인
+  const isMobile = window.innerWidth <= 768;
+
+  // 메뉴 열기
+  menuBtn.addEventListener("click", () => {
+    mobileNav.classList.add("active");
+    if (!isMobile) document.body.style.overflow = "hidden";
+  });
+
+  // 메뉴 닫기
+  closeBtn.addEventListener("click", () => {
+    mobileNav.classList.remove("active");
+    if (!isMobile) document.body.style.overflow = "";
+  });
+
+  // 링크 클릭 시 메뉴 닫기 + 이동
+  navLinks.forEach(link => {
+    link.addEventListener("click", (e) => {
+      mobileNav.classList.remove("active");
+      if (!isMobile) document.body.style.overflow = "";
+
+      if (isMobile) {
+        // 모바일은 smooth scroll 비활성화, 기본 이동
+        const target = link.getAttribute("href");
+        document.querySelector(target)?.scrollIntoView({ behavior: "auto" });
+      } else {
+        // PC에서는 smooth scroll 적용
+        const target = link.getAttribute("href");
+        const elem = document.querySelector(target);
+        if (elem) scrollY = elem.offsetTop; // 기존 smooth scroll 변수 사용
+      }
+    });
+  });
+});
+</script>
 
   <!-- Notch Navigation -->
   <nav class="notch-bar">

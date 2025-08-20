@@ -84,8 +84,7 @@ body .mobile-nav {
   display: none;
 }
 @media (max-width: 768px) {
-  body .mobile-nav .active {
-    position: fixed;
+  body .mobile-nav.active {
     top: 0;
     left: 0;
     width: 100%;
@@ -96,17 +95,31 @@ body .mobile-nav {
     align-items: center;
     z-index: 9999;
     overflow-y: auto; /* 모바일 네비게이션 내부 스크롤 허용 */
+    position: relative;
+    position: fixed;
   }
-  body .mobile-nav .active ul {
+  body .mobile-nav.active .closeBtn {
+    all: unset;
+    color: #fff;
+    position: absolute;
+    top: 2%;
+    left: 85%;
+    font-size: 3rem;
+    cursor: pointer;
+  }
+  body .mobile-nav.active ul {
     list-style: none;
     padding: 0;
     margin: 0;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
-  body .mobile-nav .active ul li {
+  body .mobile-nav.active ul li {
     margin: 20px 0;
   }
-  body .mobile-nav .active ul li a {
+  body .mobile-nav.active ul li a {
     color: #fff;
     font-size: 2rem;
     font-weight: 600;
@@ -501,6 +514,9 @@ body .mainVisual .mvSeconWrap video {
   body .mainVisual .mvSeconWrap {
     height: 40vh;
   }
+  body .mainVisual .mvSeconWrap video {
+    width: 70%;
+  }
   body .mainVisual .mvSeconWrap .center-content h3 {
     font-size: 2rem;
   }
@@ -565,7 +581,7 @@ body .content1 .content1Wrap .content1Text {
 }
 @media (max-width: 480px) {
   body .content1 .content1Wrap {
-    padding: 40px 20px;
+    padding: 60px 20px;
   }
   body .content1 .content1Wrap h2 {
     font-size: 2.4rem;
@@ -576,7 +592,7 @@ body .content1 .content1Wrap .content1Text {
     display: none;
   }
   body .content1 .content1Wrap .content1Text {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   body .content1 .content1Wrap .content1Title {
     font-size: 2.3rem;
@@ -710,7 +726,7 @@ body .service-details .service-item .image img {
   }
   body .service-details .projectText p {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-top: 30px;
   }
   body .service-details .projectText p br {
@@ -1073,6 +1089,9 @@ body .bottomTextWrap .rightArea p {
     flex-direction: column;
     padding: 100px 20px;
     gap: 40px;
+  }
+  body .bottomTextWrap .rightArea p {
+    font-size: 1rem;
   }
   body .bottomTextWrap .leftArea h1 {
     font-size: 3rem;

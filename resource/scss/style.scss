@@ -91,9 +91,15 @@ body {
   .mobile-nav {
     display: none;
   }
+
+
+
+
+
+
   @media (max-width: 768px) {
-    .mobile-nav .active {
-      position: fixed;
+    .mobile-nav.active {
+      
       top: 0;
       left: 0;
       width: 100%;
@@ -104,12 +110,30 @@ body {
       align-items: center;
       z-index: 9999;
       overflow-y: auto; /* 모바일 네비게이션 내부 스크롤 허용 */
+      position: relative;
+      position: fixed;
+
+      .closeBtn {
+        all: unset;
+        color: #fff;
+        position: absolute;
+        top: 2%;
+        left: 85%;
+        font-size: 3rem;
+        cursor: pointer;
+      }
+
+
+      
 
       ul {
         list-style: none;
         padding: 0;
         margin: 0;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
 
         li {
           margin: 20px 0;
@@ -591,6 +615,10 @@ body {
       .mvSeconWrap {
         height: 40vh;
 
+        video {
+          width: 70%;
+        }
+
         .center-content {
           h3 {
             font-size: 2rem;
@@ -669,7 +697,7 @@ body {
 
     @media (max-width: 480px) {
       .content1Wrap {
-        padding: 40px 20px;
+        padding: 60px 20px;
 
         h2 {
           font-size: 2.4rem;
@@ -682,7 +710,7 @@ body {
         }
 
         .content1Text {
-          font-size: 1.2rem;
+          font-size: 1rem;
         }
 
         .content1Title {
@@ -846,7 +874,7 @@ body {
 
         p {
           text-align: center;
-          font-size: 1.2rem;
+          font-size: 1rem;
           margin-top: 30px;
 
           br {
@@ -1298,6 +1326,14 @@ body {
       flex-direction: column;
       padding: 100px 20px;
       gap: 40px;
+
+      .rightArea {
+        p {
+          font-size: 1rem;
+        }
+      }
+
+      
 
       .leftArea {
         h1 {
