@@ -23,15 +23,14 @@
 }
 html,
 body {
-  overflow-y: auto; /* 세로 스크롤 허용 */
-  overflow-x: hidden;
+  overflow: hidden;
+
 }
 
 /* Global Styles */
 body {
   background-color: #000;
   margin: 0;
-
   font-family: "Pretendard-Regular", sans-serif;
   box-sizing: border-box;
 

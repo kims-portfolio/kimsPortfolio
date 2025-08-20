@@ -20,8 +20,7 @@
 }
 html,
 body {
-  overflow-y: auto; /* 세로 스크롤 허용 */
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* Global Styles */
