@@ -21,9 +21,9 @@
   font-weight: 400;
   font-style: normal;
 }
-html, body {
-  overflow: hidden;
-}
+// html, body {
+//   overflow: hidden;
+// }
 
 /* Global Styles */
 body {
@@ -1171,6 +1171,23 @@ body {
         color: #fff;
         font-size: 1rem;
         line-height: 2.2;
+      }
+    }
+  }
+
+    @media (max-width: 1300px) {
+    .bottomTextWrap {
+      flex-direction: column;
+
+      .leftArea {
+        h1 {
+          font-size: 5rem;
+        }
+      }
+
+      .rightArea {
+        display: flex;
+        justify-content: flex-start;
       }
     }
   }
