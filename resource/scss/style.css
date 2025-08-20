@@ -447,17 +447,21 @@ body .mainVisual .mvSeconWrap video {
   z-index: 1;
 }
 @media (max-width: 768px) {
-  body .mainVisual {
-    padding-top: 180px;
+  body .mainVisual .slider-wrapper {
+    height: auto; /* 높이를 내용에 맞게 자동 */
+    overflow-x: hidden; /* 가로 스크롤은 계속 막기 */
+    overflow-y: visible; /* 세로 스크롤 허용 */
   }
-  body .mainVisual .mvTextWrap h1 {
-    font-size: 3.9rem;
+  body .mainVisual .slider-track {
+    position: relative; /* 절대 위치 → 일반 흐름 */
+    top: auto;
+    left: auto;
+    transform: none; /* translate 제거 */
+    animation: none; /* 모바일에서는 스크롤 애니메이션 끄기 */
   }
-  body .mainVisual .mvSeconWrap {
-    height: 50vh;
-  }
-  body .mainVisual .mvSeconWrap .center-content h3 {
-    font-size: 3rem;
+  body .mainVisual .slider-track img {
+    transform: none; /* 3D 회전 효과 제거 */
+    margin-bottom: 20px; /* 이미지 간 간격 확보 */
   }
 }
 @media (max-width: 480px) {
