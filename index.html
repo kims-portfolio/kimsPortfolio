@@ -279,11 +279,16 @@
   </footer>
 
   <!-- Smooth Scroll -->
-  <script>
-    let scrollY = window.scrollY;
-    let currentY = window.scrollY;
-    const speed = 0.1;
+<script>
+  const speed = 0.1;
+  let scrollY = window.scrollY;
+  let currentY = window.scrollY;
 
+  // 화면 크기 체크
+  const isDesktop = window.innerWidth > 768;
+
+  if (isDesktop) {
+    // 데스크톱에서는 부드러운 스크롤
     window.addEventListener("wheel", (e) => {
       e.preventDefault();
       scrollY += e.deltaY;
@@ -298,8 +303,42 @@
       window.scrollTo(0, currentY);
       requestAnimationFrame(smoothScroll);
     }
+
     smoothScroll();
-  </script>
+  }
+
+  // 링크 클릭 시 이동은 화면 크기 상관없이 처리
+  document.addEventListener("DOMContentLoaded", () => {
+    const nav = document.querySelector(".notch-bar");
+    if (!nav) return;
+
+    const navLinks = Array.from(nav.querySelectorAll(".nav-item"));
+    const idFromHref = (href) => href?.split("#")[1] || null;
+
+    const map = new Map();
+    navLinks.forEach((link) => {
+      const id = idFromHref(link.getAttribute("href"));
+      if (!id) return;
+
+      const sec = document.getElementById(id);
+      if (sec) map.set(id, { link, section: sec });
+
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (!sec) return;
+
+        // 화면 크기 따라 이동 방식 분기
+        if (isDesktop) {
+          scrollY = sec.offsetTop;
+        } else {
+          window.scrollTo({ top: sec.offsetTop, behavior: "smooth" });
+        }
+
+        navLinks.forEach((l) => l.classList.toggle("active", l === link));
+      });
+    });
+  });
+</script>
 
   <!-- Nav Active Scroll -->
   <script>
