@@ -28,7 +28,7 @@ body {
 body {
   background-color: #000;
   margin: 0;
-  font-family: "SF_HambakSnow", sans-serif;
+  font-family: "Pretendard-Regular", sans-serif;
   box-sizing: border-box;
   /* Notch Bar 전체 컨테이너 */
   /* 메뉴 아이템 */
@@ -569,6 +569,7 @@ body .content1 .content1Wrap .content1Text {
   body .content1 .content1Wrap h2 {
     font-size: 2.4rem;
     margin-bottom: 20px;
+    font-weight: 600;
   }
   body .content1 .content1Wrap br {
     display: none;
