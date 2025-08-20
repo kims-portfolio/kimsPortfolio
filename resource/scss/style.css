@@ -100,7 +100,6 @@ body .notch-bar {
   gap: 30px;
   padding: 28px 0;
   z-index: 10;
-  overflow: hidden;
   border-right: 1px solid #333;
 }
 @media (max-width: 768px) {
