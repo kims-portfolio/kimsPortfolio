@@ -25,7 +25,18 @@ html,
 body {
   overflow-y: auto; /* 세로 스크롤 허용 */
   overflow-x: hidden;
+    /* IE, Edge */
+  -ms-overflow-style: none;
+  /* Firefox */
+  scrollbar-width: none;
 }
+
+/* Chrome, Safari, Opera */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
 
 /* Global Styles */
 body {
@@ -91,11 +102,6 @@ body {
   .mobile-nav {
     display: none;
   }
-
-
-
-
-
 
   @media (max-width: 768px) {
     .mobile-nav.active {
