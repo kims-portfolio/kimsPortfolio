@@ -407,9 +407,8 @@ body .mainVisual .slider-track {
   position: absolute;
   left: 0%;
   top: 50%;
-  transform: translate(-50%, -50%);
   animation: scroll 60s linear infinite;
-  overflow-x: hidden; /* 가로 스크롤 막기 */
+  overflow: hidden;
   overflow-y: auto; /* 세로 스크롤 허용 */
 }
 body .mainVisual .slider-track img {
