@@ -310,6 +310,7 @@ body .mainVisual {
   align-items: center;
   padding-top: 30vh;
   position: relative;
+  overflow: hidden;
 }
 body .mainVisual .bgDecoWrap {
   position: absolute;
