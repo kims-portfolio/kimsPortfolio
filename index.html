@@ -301,33 +301,33 @@
 
   <!-- Nav Active Scroll -->
   <script>
-    // document.addEventListener("DOMContentLoaded", () => {
-    //   const nav = document.querySelector(".notch-bar");
-    //   if (!nav) return;
+    document.addEventListener("DOMContentLoaded", () => {
+      const nav = document.querySelector(".notch-bar");
+      if (!nav) return;
 
-    //   const navLinks = Array.from(nav.querySelectorAll(".nav-item"));
-    //   const idFromHref = (href) => href?.split("#")[1] || null;
+      const navLinks = Array.from(nav.querySelectorAll(".nav-item"));
+      const idFromHref = (href) => href?.split("#")[1] || null;
 
-    //   const map = new Map();
-    //   navLinks.forEach((link) => {
-    //     const id = idFromHref(link.getAttribute("href"));
-    //     if (!id) return;
+      const map = new Map();
+      navLinks.forEach((link) => {
+        const id = idFromHref(link.getAttribute("href"));
+        if (!id) return;
 
-    //     const sec = document.getElementById(id);
-    //     if (sec) map.set(id, { link, section: sec });
+        const sec = document.getElementById(id);
+        if (sec) map.set(id, { link, section: sec });
 
-    //     link.addEventListener("click", (e) => {
-    //       e.preventDefault();
-    //       if (!sec) return;
-    //       scrollY = sec.offsetTop;
-    //       setActiveLink(link);
-    //     });
-    //   });
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (!sec) return;
+          scrollY = sec.offsetTop;
+          setActiveLink(link);
+        });
+      });
 
-    //   function setActiveLink(activeLink) {
-    //     navLinks.forEach((l) => l.classList.toggle("active", l === activeLink));
-    //   }
-    // });
+      function setActiveLink(activeLink) {
+        navLinks.forEach((l) => l.classList.toggle("active", l === activeLink));
+      }
+    });
   </script>
 
   <!-- AOS Init -->
@@ -336,7 +336,7 @@
       startEvent: "DOMContentLoaded",
       offset: 50,
       duration: 800,
-      once: false
+      once: true
     });
   </script>
 </body>
