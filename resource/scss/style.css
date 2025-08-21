@@ -12,12 +12,6 @@
   font-weight: normal;
   font-style: normal;
 }
-@font-face {
-  font-family: "Pretendard-Regular";
-  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
 html,
 body {
   overflow-y: auto; /* 세로 스크롤 허용 */
@@ -26,6 +20,7 @@ body {
   -ms-overflow-style: none;
   /* Firefox */
   scrollbar-width: none;
+  font-family: "Pretendard", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif;
 }
 
 /* Chrome, Safari, Opera */
@@ -203,27 +198,26 @@ body * {
   box-sizing: inherit; /* 모든 요소에 box-sizing 적용 */
 }
 body .topBtn {
-  position: fixed;
-  bottom: 50px;
-  right: 50px;
-  width: 80px;
-  height: 80px;
-  background-image: url("../img/topBtn.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 5000;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+  display: none;
 }
-body .topBtn.active {
-  opacity: 1;
-  visibility: visible;
+@media (max-width: 768px) {
+  body .topBtn {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 80px;
+    height: 80px;
+    background-image: url("../img/topBtn.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5000;
+    transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+  }
 }
 body .topBtn:hover {
   transform: scale(1.07);
@@ -253,10 +247,9 @@ body footer .projectText .linkIcon img:hover {
 }
 body footer .projectText h4 {
   color: #777777;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   line-height: 1.4;
   text-align: center;
-  cursor: default;
 }
 body header {
   position: fixed;
@@ -317,9 +310,6 @@ body header .gnb ul li a {
   font-weight: 500;
   transition: color 0.3s ease;
 }
-body header .gnb ul li a:hover {
-  color: #f0e2c1;
-}
 @media (max-width: 768px) {
   body header {
     display: none;
@@ -366,7 +356,7 @@ body .mainVisual .bgDecoWrap .deco1 {
 body .mainVisual .mvTextWrap {
   text-align: center;
   max-width: 100%;
-  cursor: default;
+  z-index: 1000;
 }
 body .mainVisual .mvTextWrap span {
   color: #c2c2c2;
@@ -477,7 +467,6 @@ body .mainVisual .mvSeconWrap .center-content h3 {
   white-space: nowrap;
   line-height: 1.3;
   font-weight: 600;
-  cursor: default;
   font-family: "rosaline";
   letter-spacing: 0.05em;
 }
@@ -534,9 +523,9 @@ body .mainVisual .mvSeconWrap video {
 body .content1 {
   width: 100%;
   background-color: #fff;
-  cursor: default;
 }
 body .content1 .content1Wrap {
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -819,9 +808,6 @@ body .projectsWrap ul .rightObj .bottomArea ul li img {
   margin-right: 10px;
   vertical-align: middle;
 }
-body .projectsWrap ul .rightObj .textArea .topText {
-  cursor: default;
-}
 body .projectsWrap ul .rightObj .textArea .topText h4 {
   font-size: 2rem;
   color: #fff;
@@ -905,9 +891,6 @@ body .projectsWrap ul .leftObj .bottomArea ul li img {
   height: 1.8rem;
   margin-right: 10px;
   vertical-align: middle;
-}
-body .projectsWrap ul .leftObj .textArea .topText {
-  cursor: default;
 }
 body .projectsWrap ul .leftObj .textArea .topText h4 {
   font-size: 2rem;
@@ -994,12 +977,11 @@ body .projectsWrap ul .leftObj .imgArea::before {
   }
 }
 body .bottomTextWrap {
-  padding: 180px 220px;
+  padding: 180px 140px;
   background-color: #080808;
   display: flex;
   z-index: 1;
   gap: 80px;
-  cursor: default;
 }
 body .bottomTextWrap .leftArea {
   flex: 1;
@@ -1042,13 +1024,59 @@ body .bottomTextWrap .leftArea h1 {
 body .bottomTextWrap .rightArea {
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
+  flex-direction: column;
 }
 body .bottomTextWrap .rightArea p {
   color: #fff;
   font-size: 1rem;
   line-height: 2.2;
+}
+body .bottomTextWrap .rightArea .contactArea {
+  margin-top: 50px;
+}
+body .bottomTextWrap .rightArea .contactArea h3 {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+body .bottomTextWrap .rightArea .contactArea ul {
+  display: flex;
+  gap: 24px;
+}
+body .bottomTextWrap .rightArea .contactArea ul li a {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease-in-out, transform 1.3s ease-in-out;
+}
+body .bottomTextWrap .rightArea .contactArea ul li a.ktIcon {
+  background-image: url("../img/kktIcon.png");
+}
+body .bottomTextWrap .rightArea .contactArea ul li a.lineIcon {
+  background-image: url("../img/lineIcon.png");
+}
+body .bottomTextWrap .rightArea .contactArea ul li a.behenIcon {
+  background-image: url("../img/beIcon.png");
+}
+body .bottomTextWrap .rightArea .contactArea ul li a.mailIcon {
+  background-image: url("../img/mailIcon.png");
+}
+body .bottomTextWrap .rightArea .contactArea ul li a:hover {
+  filter: grayscale(0%);
+  scale: 1.05;
+}
+@media (max-width: 768px) {
+  body .bottomTextWrap .rightArea .contactArea ul li a {
+    filter: grayscale(0%);
+  }
 }
 @media (max-width: 1300px) {
   body .bottomTextWrap {
