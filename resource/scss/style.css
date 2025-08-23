@@ -969,6 +969,18 @@ body .projectsWrap ul .leftObj .imgArea::before {
   body .projectsWrap ul .rightObj {
     margin-bottom: 120px;
   }
+  body .projectsWrap ul .leftObj .imgArea:hover img,
+  body .projectsWrap ul .rightObj .imgArea:hover img {
+    filter: none;
+  }
+  body .projectsWrap ul .leftObj .imgArea:hover::before,
+  body .projectsWrap ul .rightObj .imgArea:hover::before {
+    content: none;
+  }
+  body .projectsWrap ul .leftObj .imgArea::before,
+  body .projectsWrap ul .rightObj .imgArea::before {
+    background: none;
+  }
 }
 @media (max-width: 480px) {
   body .projectsWrap {

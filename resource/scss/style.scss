@@ -1178,6 +1178,21 @@ body {
         .leftObj,
         .rightObj {
           margin-bottom: 120px;
+
+          .imgArea {
+            &:hover {
+              img {
+                filter: none; // 어둡게 효과 제거
+              }
+              &::before {
+                content: none; // "VIEW PROJECT →" 제거
+              }
+            }
+
+            &::before {
+              background: none; // 원래 dim 배경 제거 (선택 사항)
+            }
+          }
         }
       }
     }
