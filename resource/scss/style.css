@@ -204,7 +204,7 @@ body .topBtn {
   body .topBtn {
     position: fixed;
     bottom: 50px;
-    right: 50px;
+    right: 22px;
     width: 80px;
     height: 80px;
     background-image: url("../img/topBtn.png");
@@ -569,6 +569,9 @@ body .content1 .content1Wrap .content1Text {
   line-height: 1.5;
   font-weight: 500;
 }
+body .content1 .content1Wrap .content1Text .mobileBr {
+  display: none;
+}
 @media (max-width: 768px) {
   body .content1 .content1Wrap {
     padding: 60px 20px;
@@ -592,6 +595,9 @@ body .content1 .content1Wrap .content1Text {
   }
   body .content1 .content1Wrap .content1Text {
     font-size: 1rem;
+  }
+  body .content1 .content1Wrap .content1Text .mobileBr {
+    display: block;
   }
   body .content1 .content1Wrap .content1Title {
     font-size: 2.3rem;
@@ -627,6 +633,9 @@ body .service-details .projectText p {
   display: flex;
   align-items: center;
   line-height: 1.8;
+}
+body .service-details .projectText p .mobileBr {
+  display: none;
 }
 body .service-details .service-item {
   display: flex;
@@ -730,6 +739,9 @@ body .service-details .service-item .image img {
   }
   body .service-details .projectText p br {
     display: none;
+  }
+  body .service-details .projectText p .mobileBr {
+    display: block;
   }
   body .service-details .service-item {
     background-color: #000;
@@ -1033,6 +1045,9 @@ body .bottomTextWrap .rightArea p {
   font-size: 1rem;
   line-height: 2.2;
 }
+body .bottomTextWrap .rightArea p .mobileBr {
+  display: none;
+}
 body .bottomTextWrap .rightArea .contactArea {
   margin-top: 50px;
 }
@@ -1118,9 +1133,6 @@ body .bottomTextWrap .rightArea .contactArea ul li a:hover {
     font-size: 1.2rem;
     line-height: 1.8;
   }
-  body .bottomTextWrap .rightArea p br {
-    display: none;
-  }
 }
 @media (max-width: 480px) {
   body .bottomTextWrap {
@@ -1130,6 +1142,9 @@ body .bottomTextWrap .rightArea .contactArea ul li a:hover {
   }
   body .bottomTextWrap .rightArea p {
     font-size: 1rem;
+  }
+  body .bottomTextWrap .rightArea p .mobileBr {
+    display: block;
   }
   body .bottomTextWrap .leftArea h1 {
     font-size: 3rem;

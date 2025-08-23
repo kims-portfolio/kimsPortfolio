@@ -230,28 +230,26 @@ body {
   }
 
   .topBtn {
-
     display: none;
-
   }
 
-    @media (max-width: 768px) {
+  @media (max-width: 768px) {
     .topBtn {
-          position: fixed;
-    bottom: 50px;
-    right: 50px;
-    width: 80px;
-    height: 80px;
-    background-image: url("../img/topBtn.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 5000;    
-    transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+      position: fixed;
+      bottom: 50px;
+      right: 22px;
+      width: 80px;
+      height: 80px;
+      background-image: url("../img/topBtn.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 5000;
+      transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
     }
   }
 
@@ -296,7 +294,6 @@ body {
       }
     }
   }
-
 
   header {
     position: fixed;
@@ -676,6 +673,10 @@ body {
         max-width: 800px;
         line-height: 1.5;
         font-weight: 500;
+
+        .mobileBr {
+          display: none;
+        }
       }
     }
 
@@ -706,6 +707,9 @@ body {
 
         .content1Text {
           font-size: 1rem;
+          .mobileBr {
+            display: block;
+          }
         }
 
         .content1Title {
@@ -748,6 +752,10 @@ body {
         display: flex;
         align-items: center;
         line-height: 1.8;
+
+        .mobileBr {
+          display: none;
+        }
       }
     }
     .service-item {
@@ -874,6 +882,10 @@ body {
 
           br {
             display: none;
+          }
+
+          .mobileBr {
+            display: block;
           }
         }
       }
@@ -1255,6 +1267,10 @@ body {
         color: #fff;
         font-size: 1rem;
         line-height: 2.2;
+
+        .mobileBr {
+          display: none;
+        }
       }
 
       .contactArea {
@@ -1309,9 +1325,6 @@ body {
                 filter: grayscale(0%);
               }
             }
-
-
-
           }
         }
       }
@@ -1371,9 +1384,9 @@ body {
           font-size: 1.2rem;
           line-height: 1.8;
 
-          br {
-            display: none;
-          }
+          // br {
+          //   display: none;
+          // }
         }
       }
     }
@@ -1388,6 +1401,9 @@ body {
       .rightArea {
         p {
           font-size: 1rem;
+          .mobileBr {
+            display: block;
+          }
         }
       }
 
