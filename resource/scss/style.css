@@ -519,6 +519,7 @@ body .mainVisual .mvSeconWrap video {
   }
   body .mainVisual .bgDecoWrap .deco1 {
     width: 650px;
+    opacity: 0.13;
   }
   body .mainVisual .slider-wrapper {
     margin-top: 0px;
