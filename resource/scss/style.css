@@ -803,10 +803,14 @@ body .projectsWrap ul .rightObj {
   margin-bottom: 180px;
 }
 body .projectsWrap ul .rightObj .bottomArea p {
-  color: #fff;
+  color: #a0a0a0;
   margin-top: 30px;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.8;
+  max-width: 300px;
+}
+body .projectsWrap ul .rightObj .bottomArea p span {
+  color: #fff;
 }
 body .projectsWrap ul .rightObj .bottomArea ul {
   display: flex;
@@ -887,10 +891,14 @@ body .projectsWrap ul .leftObj {
   flex-direction: row-reverse;
 }
 body .projectsWrap ul .leftObj .bottomArea p {
-  color: #fff;
+  color: #a0a0a0;
   margin-top: 30px;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.8;
+  max-width: 300px;
+}
+body .projectsWrap ul .leftObj .bottomArea p span {
+  color: #fff;
 }
 body .projectsWrap ul .leftObj .bottomArea ul {
   display: flex;

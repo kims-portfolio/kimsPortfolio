@@ -962,11 +962,16 @@ body {
 
         .bottomArea {
           p {
-            color: #fff;
+            color: #a0a0a0;
             margin-top: 30px;
             font-size: 14px;
-            line-height: 1.5;
+            line-height: 1.8;
+            max-width: 300px;
             // cursor: default;
+
+            span {
+              color: #fff;
+            }
           }
 
           ul {
@@ -1071,11 +1076,16 @@ body {
 
         .bottomArea {
           p {
-            color: #fff;
+            color: #a0a0a0;
             margin-top: 30px;
             font-size: 14px;
-            line-height: 1.5;
+            line-height: 1.8;
             // cursor: default;
+            max-width: 300px;
+
+            span {
+              color: #fff;
+            }
           }
 
           ul {
