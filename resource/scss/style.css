@@ -80,7 +80,9 @@ body .mobileHeader {
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #333333;
-    padding: 20px 30px;
+    padding: 0px 30px;
+    background-color: rgba(0, 0, 0, 0.9058823529);
+    z-index: 6000;
   }
   body .mobileHeader .leftArea .logo {
     width: 100px;
