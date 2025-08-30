@@ -163,6 +163,8 @@ body .mobile-nav {
     border-radius: 6px;
     text-decoration: none;
     color: #fff;
+    width: 80px;
+    text-align: center;
   }
 }
 body .notch-bar {
