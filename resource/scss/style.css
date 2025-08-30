@@ -139,14 +139,27 @@ body .mobile-nav {
     gap: 20px;
   }
   body .mobile-nav.active ul li {
-    margin: 20px 0;
+    margin: 10px 0;
   }
   body .mobile-nav.active ul li a {
     color: #fff;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.3s;
+  }
+  body .mobile-nav.active .languageSelect {
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    top: 14%;
+    gap: 20px;
+  }
+  body .mobile-nav.active .languageSelect a {
+    font-size: 24px;
+    padding: 1px 20px 5px 20px;
+    border: 1px solid #535353;
+    border-radius: 6px;
   }
 }
 body .notch-bar {
@@ -222,8 +235,8 @@ body .topBtn {
     position: fixed;
     bottom: 50px;
     right: 22px;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     background-image: url("../img/topBtn.png");
     background-size: cover;
     background-repeat: no-repeat;
