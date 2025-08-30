@@ -154,6 +154,7 @@ body .mobile-nav {
     flex-direction: row;
     top: 14%;
     gap: 20px;
+    z-index: 9999;
   }
   body .mobile-nav.active .languageSelect a {
     font-size: 24px;
