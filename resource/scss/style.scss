@@ -344,7 +344,6 @@ body {
         position: absolute;
         top: 9%;
         left: -107%;
-        
 
         &:hover {
           .lang-dropdown {
@@ -362,9 +361,7 @@ body {
       }
 
       .current-lang {
-        
         padding: 3px 5px 0px 5px;
-        
       }
 
       .lang-flag {
@@ -395,7 +392,6 @@ body {
           background: #2b2b2b7e;
         }
       }
-
 
       li {
         list-style-type: none;
@@ -712,6 +708,8 @@ body {
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.39);
             background-color: #000;
             mix-blend-mode: multiply;
+            opacity: 1;
+            filter: grayscale(20%);
           }
         }
       }
