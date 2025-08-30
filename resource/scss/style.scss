@@ -353,7 +353,7 @@ body {
       }
 
       .switch-lang {
-        width: 110px;
+        width: 100px;
         text-align: center;
         cursor: pointer;
         position: absolute;
@@ -365,6 +365,10 @@ body {
             display: block;
           }
         }
+
+        .current-lang {
+          margin-bottom: 24px;
+        }
       }
 
       .switcher-link {
@@ -373,10 +377,6 @@ body {
         &:hover {
           color: #fff;
         }
-      }
-
-      .current-lang {
-        padding: 3px 5px 0px 5px;
       }
 
       .lang-flag {
@@ -391,21 +391,28 @@ body {
         margin-top: 2px;
         color: #fff;
         text-align: center;
+        white-space: nowrap;
+        padding-left: 17px;
+      }
+
+      .lang-list {
+        display: inline-block;
+        text-decoration: none;
+        vertical-align: top;
+        width: 100px;
+        color: #fff;
+        text-align: center;
+        padding: 13px 35px;
+        white-space: nowrap;
+        background-color: #3d3d3d5b;
+
+        &:hover {
+          background: #2b2b2b;
+        }
       }
 
       .lang-dropdown {
         display: none;
-        background: #1b1b1b8e;
-        margin-top: 21px;
-      }
-
-      .selecting-lang {
-        padding: 13px 5px;
-        cursor: pointer;
-
-        &:hover {
-          background: #2b2b2b7e;
-        }
       }
 
       li {
