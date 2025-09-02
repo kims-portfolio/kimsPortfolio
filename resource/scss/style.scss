@@ -510,14 +510,16 @@ body {
       z-index: 0;
 
       .deco1 {
-        position: absolute;
-        top: -475px;
-        left: -231px;
-        width: 737px;
-        height: auto;
-        object-fit: cover;
-        z-index: -1;
-        opacity: 0.08;
+    position: absolute;
+    top: -440px;
+    left: -408px;
+    width: 793px;
+    height: auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.2;
+    animation: floatRotate 8s ease-in-out infinite;
 
         /* 애니메이션 적용 */
         animation: floatRotate 8s ease-in-out infinite;
@@ -674,11 +676,11 @@ body {
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 40%;
+        width: 30%;
         height: auto;
         transform: translate(-50%, -50%);
         object-fit: cover;
-        opacity: 0.3;
+        opacity: 0.2;
         z-index: 1;
       }
     }
@@ -712,8 +714,11 @@ body {
 
       .bgDecoWrap {
         .deco1 {
-          width: 650px;
-          opacity: 0.13;
+        width: 650px;
+        opacity: 0.13;
+        top: -63px;
+        position: absolute;
+        left: -328px;
         }
       }
 
@@ -756,7 +761,7 @@ body {
         height: 40vh;
 
         video {
-          width: 70%;
+          width: 80%;
         }
 
         .center-content {
@@ -1149,6 +1154,7 @@ body {
               color: #fff;
               margin-bottom: 1rem;
               font-weight: 600;
+              line-height: 1.2;
             }
 
             span {
@@ -1263,6 +1269,7 @@ body {
               color: #fff;
               margin-bottom: 1rem;
               font-weight: 600;
+              line-height: 1.1;
             }
 
             span {
