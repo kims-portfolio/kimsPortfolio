@@ -557,7 +557,6 @@ body .mainVisual .mvSeconWrap {
   width: 100%;
   height: 100vh;
   overflow-x: hidden; /* 가로 스크롤 막기 */
-  overflow-y: auto; /* 세로 스크롤 허용 */
 }
 body .mainVisual .mvSeconWrap .center-content {
   position: absolute;
@@ -581,7 +580,7 @@ body .mainVisual .mvSeconWrap video {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 30%;
+  width: 50%;
   height: auto;
   transform: translate(-50%, -50%);
   -o-object-fit: cover;
@@ -609,7 +608,7 @@ body .mainVisual .mvSeconWrap video {
   }
   body .mainVisual .bgDecoWrap .deco1 {
     width: 650px;
-    opacity: 0.13;
+    opacity: 0.33;
     top: -63px;
     position: absolute;
     left: -328px;
@@ -646,9 +645,6 @@ body .mainVisual .mvSeconWrap video {
   }
   body .mainVisual .mvSeconWrap {
     height: 40vh;
-  }
-  body .mainVisual .mvSeconWrap video {
-    width: 80%;
   }
   body .mainVisual .mvSeconWrap .center-content h3 {
     font-size: 2rem;
