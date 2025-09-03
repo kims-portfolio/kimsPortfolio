@@ -585,7 +585,7 @@ body .mainVisual .mvSeconWrap video {
   transform: translate(-50%, -50%);
   -o-object-fit: cover;
      object-fit: cover;
-  opacity: 0.3;
+  opacity: 0.5;
   z-index: 1;
 }
 @media (max-width: 768px) {
@@ -641,7 +641,7 @@ body .mainVisual .mvSeconWrap video {
     margin-top: 20px;
   }
   body .mainVisual .mvSeconWrap {
-    height: 40vh;
+    height: 50vh;
   }
   body .mainVisual .mvSeconWrap video {
     width: 130%;
