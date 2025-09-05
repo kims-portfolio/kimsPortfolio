@@ -585,7 +585,7 @@ body .mainVisual .mvSeconWrap video {
   transform: translate(-50%, -50%);
   -o-object-fit: cover;
      object-fit: cover;
-  opacity: 0.5;
+  opacity: 0.7;
   z-index: 1;
 }
 @media (max-width: 768px) {
@@ -612,6 +612,7 @@ body .mainVisual .mvSeconWrap video {
   }
   body .mainVisual .slider-wrapper {
     margin-top: 0px;
+    height: 230px;
   }
   body .mainVisual .slider-wrapper .slider-track {
     display: flex;
@@ -641,7 +642,7 @@ body .mainVisual .mvSeconWrap video {
     margin-top: 20px;
   }
   body .mainVisual .mvSeconWrap {
-    height: 50vh;
+    height: 40vh;
   }
   body .mainVisual .mvSeconWrap video {
     width: 130%;
