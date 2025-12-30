@@ -1,5 +1,5 @@
 // ==============================
-// 2025 Portfolio JS (통합 버전)
+// 2026 Portfolio JS (통합 버전)
 // ==============================
 
 document.addEventListener("DOMContentLoaded", () => {
