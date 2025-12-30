@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
         mailBtn.addEventListener("click", (e) => {
             e.preventDefault();
             navigator.clipboard.writeText(email).then(() => {
-                alert(`${email} メールがコピーされました。`);
+                alert(`${email} The email has been copied.`);
             }).catch(err => console.error("コピーに失敗しました:", err));
         });
     }
