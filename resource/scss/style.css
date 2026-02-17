@@ -595,6 +595,7 @@ body .mainVisual .mvSeconWrap video {
 @media (max-width: 768px) {
   body .mainVisual {
     padding-top: 180px;
+    height: 100vw;
   }
   body .mainVisual .mvTextWrap h1 {
     font-size: 3.9rem;
@@ -609,6 +610,7 @@ body .mainVisual .mvSeconWrap video {
 @media (max-width: 480px) {
   body .mainVisual {
     padding: 180px 0px 0px 0px;
+    height: 100vw;
   }
   body .mainVisual .bgDecoWrap .deco1 {
     width: 650px;

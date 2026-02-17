@@ -693,6 +693,7 @@ body {
   @media (max-width: 768px) {
     .mainVisual {
       padding-top: 180px;
+      height: 100vw;
 
       .mvTextWrap {
         h1 {
@@ -715,6 +716,7 @@ body {
   @media (max-width: 480px) {
     .mainVisual {
       padding: 180px 0px 0px 0px;
+      height: 100vw;
 
       .bgDecoWrap {
         .deco1 {
