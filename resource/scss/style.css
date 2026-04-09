@@ -35,13 +35,6 @@ body {
   margin: 0;
   font-family: "Pretendard-Regular", sans-serif;
   box-sizing: border-box;
-  /* Notch Bar 전체 컨테이너 */
-  /* 메뉴 아이템 */
-  /* 버튼 내부 원 2개 */
-  /* 배경 원 */
-  /* 하이라이트 (빛 효과) */
-  /* Active 상태 버튼 강조 효과 */
-  /* Hover 시 Glow 효과 */
 }
 body .mobileHeader {
   display: none;
@@ -171,6 +164,9 @@ body .mobile-nav {
     padding-bottom: 2px;
   }
 }
+body {
+  /* Notch Bar 전체 컨테이너 */
+}
 body .notch-bar {
   position: fixed;
   right: 62px;
@@ -195,6 +191,9 @@ body .notch-bar {
     display: none;
   }
 }
+body {
+  /* 메뉴 아이템 */
+}
 body .nav-item {
   opacity: 0.25;
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -212,6 +211,9 @@ body .circle {
   height: 17px;
   flex: none;
 }
+body {
+  /* 버튼 내부 원 2개 */
+}
 body .circle div {
   position: absolute;
   top: 0;
@@ -221,14 +223,26 @@ body .circle div {
   aspect-ratio: 1/1;
   border-radius: 50%;
 }
+body {
+  /* 배경 원 */
+}
 body .circle div:first-child {
   background: linear-gradient(27deg, #141414, #0a0a0a);
+}
+body {
+  /* 하이라이트 (빛 효과) */
 }
 body .circle div:last-child {
   background: radial-gradient(circle, rgb(255, 255, 255), transparent);
 }
+body {
+  /* Active 상태 버튼 강조 효과 */
+}
 body .nav-item.active .circle div:first-child {
   background: linear-gradient(27deg, #333, #111);
+}
+body {
+  /* Hover 시 Glow 효과 */
 }
 body .nav-item:hover .circle div:first-child {
   box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
