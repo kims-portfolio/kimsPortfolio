@@ -530,35 +530,6 @@
           </ul>
         </div>
       </div>
-
-      <form action="https://formsubmit.co/sys152901@naver.com" method="POST">
-    
-    <!-- 이름 -->
-    <input type="text" name="name" placeholder="이름" required>
-
-    <!-- 이메일 (Reply 기능용) -->
-    <input type="email" name="email" placeholder="이메일" required>
-
-    <!-- 제목 -->
-    <input type="text" name="title" placeholder="문의 제목" required>
-
-    <!-- 내용 -->
-    <textarea name="message" placeholder="문의 내용을 입력하세요" required></textarea>
-
-    <!-- 메일 제목 설정 -->
-    <input type="hidden" name="_subject" value="웹사이트 문의가 접수되었습니다">
-
-    <!-- 제출 후 이동 페이지 (없으면 기본 thank you 페이지로 이동됨) -->
-    <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html">
-
-    <!-- 자동 회신 -->
-    <input type="hidden" name="_autoresponse" value="문의가 정상적으로 접수되었습니다. 빠르게 답변드리겠습니다. 감사합니다.">
-
-    <!-- 스팸 방지 (reCAPTCHA 유지 추천) -->
-    <!-- <input type="hidden" name="_captcha" value="false">  -->
-
-    <button type="submit">문의 보내기</button>
-</form>
     </section>
 
     <!-- Footer -->
@@ -572,76 +543,5 @@
     <a href="#mainVisual" class="topBtn"></a>
   </body>
 
-    <style>
-    .contact-wrap {
-    max-width: 600px;
-    margin: 80px auto;
-    padding: 40px;
-}
 
-/* 폼 박스 */
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-/* 제목 */
-.contact-form h2 {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-/* 그룹 */
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-/* 라벨 */
-.form-group label {
-    font-size: 14px;
-    font-weight: 500;
-    color: #444;
-}
-
-/* 인풋 & 텍스트에어리어 */
-.form-group input,
-.form-group textarea {
-    padding: 14px 16px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 14px;
-    transition: all 0.2s ease;
-}
-
-/* 포커스 효과 */
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #111;
-}
-
-/* 버튼 */
-.submit-btn {
-    margin-top: 10px;
-    padding: 14px;
-    border: none;
-    border-radius: 8px;
-    background: #111;
-    color: #fff;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s ease;
-}
-
-.submit-btn:hover {
-    background: #333;
-}
-
-
-  </style>
 </html>
